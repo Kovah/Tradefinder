@@ -5,6 +5,11 @@ import { Provider } from 'react-redux';
 
 import App from './src/App';
 import store from './src/app/store';
+import { saveState } from './src/app/localstorage';
+
+store.subscribe(() => {
+  saveState(store.getState());
+});
 
 ReactDOM.render(
   <Provider store={store}>
