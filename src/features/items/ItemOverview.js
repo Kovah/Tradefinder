@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { getItems } from './itemsSlice';
 import { CreateItemForm } from './CreateItemForm';
 import { EditItemForm } from './EditItemForm';
+import { Modal } from '../../layout/Modal';
 
 export function ItemOverview () {
   let items = useSelector(getItems);
@@ -25,9 +26,10 @@ export function ItemOverview () {
   }
 
   function toggleEditForm (event) {
+    setEditForm(
+      <EditItemForm ident={event.target.dataset.ident} oldName={event.target.innerText} closeForm={closeEditForm}/>
+    );
     setEditFormVisible(true);
-    setEditForm(<EditItemForm ident={event.target.dataset.ident} oldName={event.target.innerText}
-      closeForm={closeEditForm}/>);
   }
 
   function closeEditForm () {
@@ -54,18 +56,10 @@ export function ItemOverview () {
         {listItems}
       </div>
 
-      <div className={'fixed z-10 inset-0 overflow-y-auto ' + (editFormVisible ? '' : 'hidden')}>
-        <div className="flex items-center justify-center min-h-screen pt-4 px-4">
-          <div className={
-            'fixed inset-0 transition-opacity bg-black ease duration-300 opacity-0 ' + (editFormVisible ? 'opacity-50' : '')
-          } onClick={closeEditForm}>&nbsp;</div>
+      { editFormVisible &&
+        <Modal visible={editFormVisible} closeModal={closeEditForm}>{editForm}</Modal>
+      }
 
-          <div className={'inline-block p-6 bg-gray-800 rounded-sm overflow-hidden shadow-lg transform my-8'}>
-            {editForm}
-          </div>
-
-        </div>
-      </div>
     </div>
   );
 }
