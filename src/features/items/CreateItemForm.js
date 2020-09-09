@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { addItem } from './itemsSlice';
 
-export function NewItemForm () {
+export function CreateItemForm () {
   const dispatch = useDispatch();
   const [name, setName] = React.useState('');
 
