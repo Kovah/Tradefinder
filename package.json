@@ -7,8 +7,10 @@
     "url": "git+https://github.com/Kovah/Tradefinder.git"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.4.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-redux": "^7.2.1",
     "tailwindcss": "^1.8.5"
   },
   "devDependencies": {
