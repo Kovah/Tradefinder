@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import itemsReducer from '../features/items/itemsSlice';
+import locationsReducer from '../features/locations/LocationsSlice';
 import { loadState } from './localstorage';
 
 const persistedState = loadState();
@@ -11,6 +12,7 @@ if (persistedState) {
 export default configureStore({
   reducer: {
     items: itemsReducer,
+    locations: locationsReducer,
   },
   preloadedState: persistedState
 });
