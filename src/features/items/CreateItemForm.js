@@ -12,12 +12,14 @@ export function CreateItemForm () {
 
     if (event.target.checkValidity()) {
       dispatch(addItem(name));
-      setName('')
+      setName('');
     }
   }
 
   return (
     <form onSubmit={handleSubmit}>
+      <h3 className="text-2xl mb-4">Create new Item</h3>
+
       <label htmlFor="item-name">Item Name</label>
       <input type="text" id="item-name" value={name} onChange={e => setName(e.target.value)}
         minLength="1" required className="w-full py-2 px-3 rounded-sm my-4 bg-gray-700 shadow-sm"/>
@@ -26,5 +28,5 @@ export function CreateItemForm () {
         Add Item
       </button>
     </form>
-  )
+  );
 }

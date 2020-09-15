@@ -9,9 +9,8 @@ import { Modal } from '../../layout/Modal';
 export function ItemOverview () {
   let items = useSelector(getItems);
 
-  const [createFormVisible, setCreateFormVisible] = React.useState(false);
-  const [editForm, setEditForm] = React.useState('');
-  const [editFormVisible, setEditFormVisible] = React.useState(false);
+  const [modalContent, setModalContent] = React.useState('');
+  const [modalVisible, setModalVisible] = React.useState(false);
 
   const listItems = items.map((item) =>
     <div className="border border-gray-700 p-4 text-center text-2xl rounded-sm
@@ -22,19 +21,20 @@ export function ItemOverview () {
   );
 
   function toggleCreateForm () {
-    setCreateFormVisible(!createFormVisible);
+    setModalContent(<CreateItemForm/>);
+    setModalVisible(true);
   }
 
   function toggleEditForm (event) {
-    setEditForm(
-      <EditItemForm ident={event.target.dataset.ident} oldName={event.target.innerText} closeForm={closeEditForm}/>
+    setModalContent(
+      <EditItemForm ident={event.target.dataset.ident} oldName={event.target.innerText} closeForm={closeModal}/>
     );
-    setEditFormVisible(true);
+    setModalVisible(true);
   }
 
-  function closeEditForm () {
-    setEditForm('');
-    setEditFormVisible(false);
+  function closeModal () {
+    setModalContent('');
+    setModalVisible(false);
   }
 
   return (
@@ -48,16 +48,12 @@ export function ItemOverview () {
         </button>
       </div>
 
-      <div className={'mt-4 ' + (createFormVisible ? '' : 'hidden')}>
-        <CreateItemForm/>
-      </div>
-
       <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
         {listItems}
       </div>
 
-      { editFormVisible &&
-        <Modal visible={editFormVisible} closeModal={closeEditForm}>{editForm}</Modal>
+      { modalVisible &&
+        <Modal visible={modalVisible} closeModal={closeModal}>{modalContent}</Modal>
       }
 
     </div>
