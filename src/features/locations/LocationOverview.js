@@ -9,9 +9,8 @@ import { EditLocationForm } from './EditLocationForm';
 export function LocationOverview () {
   let locations = useSelector(getLocations);
 
-  const [createFormVisible, setCreateFormVisible] = React.useState(false);
-  const [editForm, setEditForm] = React.useState('');
-  const [editFormVisible, setEditFormVisible] = React.useState(false);
+  const [modalContent, setModalContent] = React.useState('');
+  const [modalVisible, setModalVisible] = React.useState(false);
 
   const listLocations = locations.map((location) =>
     <div className="border border-gray-700 p-4 text-center text-2xl rounded-sm
@@ -22,19 +21,20 @@ export function LocationOverview () {
   );
 
   function toggleCreateForm () {
-    setCreateFormVisible(!createFormVisible);
+    setModalContent(<CreateLocationForm closeForm={closeModal}/>);
+    setModalVisible(true);
   }
 
   function toggleEditForm (event) {
-    setEditForm(
-      <EditLocationForm ident={event.target.dataset.ident} oldName={event.target.innerText} closeForm={closeEditForm}/>
+    setModalContent(
+      <EditLocationForm ident={event.target.dataset.ident} oldName={event.target.innerText} closeForm={closeModal}/>
     );
-    setEditFormVisible(true);
+    setModalVisible(true);
   }
 
-  function closeEditForm () {
-    setEditForm('');
-    setEditFormVisible(false);
+  function closeModal () {
+    setModalContent('');
+    setModalVisible(false);
   }
 
   return (
@@ -48,16 +48,12 @@ export function LocationOverview () {
         </button>
       </div>
 
-      <div className={'mt-4 ' + (createFormVisible ? '' : 'hidden')}>
-        <CreateLocationForm/>
-      </div>
-
       <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
         {listLocations}
       </div>
 
-      { editFormVisible &&
-        <Modal visible={editFormVisible} closeModal={closeEditForm}>{editForm}</Modal>
+      {modalVisible &&
+      <Modal visible={modalVisible} closeModal={closeModal}>{modalContent}</Modal>
       }
 
     </div>

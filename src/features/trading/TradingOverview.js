@@ -2,11 +2,11 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Modal } from '../../layout/Modal';
 import { SelectLocationForm } from './SelectLocationForm';
-import { getTradingLocations } from './TradingSlice';
 import { TradingLocation } from './TradingLocation';
+import { getSelectedLocations } from '../locations/LocationsSlice';
 
 export function TradingOverview () {
-  const tradingLocations = useSelector(getTradingLocations);
+  const tradingLocations = useSelector(getSelectedLocations);
 
   const [modalVisible, setModalVisible] = React.useState(false);
   const [modalContent, setModalContent] = React.useState('');

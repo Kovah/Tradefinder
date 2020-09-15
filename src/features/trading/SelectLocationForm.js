@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addTradingLocation, getSelectedLocationIdents } from './TradingSlice';
-import { getLocations } from '../locations/LocationsSlice';
+import { getLocations, getSelectedLocationIdents } from '../locations/LocationsSlice';
 
 export function SelectLocationForm (props) {
   const dispatch = useDispatch();
@@ -22,12 +21,7 @@ export function SelectLocationForm (props) {
     event.preventDefault();
 
     if (event.target.checkValidity()) {
-      const newLocation = availableLocations.filter(location => {
-        return location.ident === locationSelect.current.value;
-      })
-
-      dispatch(addTradingLocation(newLocation[0]));
-
+      console.log(locationSelect.current.value); //@DEBUG
       props.closeForm();
     }
   }
