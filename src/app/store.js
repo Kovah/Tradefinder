@@ -10,7 +10,7 @@ if (persistedState) {
   console.info('Loading state from your Browser...');
 }
 
-function appVersionReducer (state, action) {
+function appVersionReducer (state) {
   if (typeof state === 'undefined') {
     state = {
       appVersion: appVersion
