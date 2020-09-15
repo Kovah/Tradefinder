@@ -20,7 +20,7 @@ export function TradingOverview () {
     setModalContent(
       <div>
         <SelectLocationForm closeForm={closeModal}/>
-        <button className="mt-6 text-gray-400 hover:text-gray-200" onClick={addAndSelectNewLocation}>
+        <button className="mt-6 text-sm text-gray-400 hover:text-gray-200" onClick={addAndSelectNewLocation}>
           Add new Location
         </button>
       </div>
@@ -32,7 +32,7 @@ export function TradingOverview () {
     setModalContent(
       <div>
         <CreateLocationForm closeForm={closeModal} selectAfterAdding={true}/>
-        <button className="mt-6 text-gray-400 hover:text-gray-200" onClick={selectNewLocation}>
+        <button className="mt-6 text-sm text-gray-400 hover:text-gray-200" onClick={selectNewLocation}>
           Add existing Location
         </button>
       </div>

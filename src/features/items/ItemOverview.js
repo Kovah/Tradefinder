@@ -21,7 +21,7 @@ export function ItemOverview () {
   );
 
   function toggleCreateForm () {
-    setModalContent(<CreateItemForm/>);
+    setModalContent(<CreateItemForm closeForm={closeModal}/>);
     setModalVisible(true);
   }
 
