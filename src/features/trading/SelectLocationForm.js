@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getLocations, getSelectedLocationIdents } from '../locations/LocationsSlice';
 
 export function SelectLocationForm (props) {
-  const dispatch = useDispatch();
-
   const availableLocations = useSelector(getLocations);
   const selectedLocations = useSelector(getSelectedLocationIdents);
   const locationSelect = React.createRef();
@@ -28,6 +26,8 @@ export function SelectLocationForm (props) {
 
   return (
     <form onSubmit={handleSubmit}>
+      <h3 className="text-2xl mb-4">Select existing Location</h3>
+
       <label htmlFor="location-ident">Location</label>
       <select name="location-ident" id="location-ident" required ref={locationSelect}
         className="w-full py-2 px-3 rounded-sm my-4 bg-gray-700 shadow-sm">

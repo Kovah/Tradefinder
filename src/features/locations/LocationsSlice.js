@@ -37,7 +37,7 @@ export const locationsSlice = createSlice({
     addLocation: (state, action) => {
       addNewLocationToState(state, action.payload);
     },
-    addAndSelectLocation (state, action) {
+    addAndSelectLocation: (state, action) => {
       const newLocation = addNewLocationToState(state, action.payload);
 
       if (newLocation) {

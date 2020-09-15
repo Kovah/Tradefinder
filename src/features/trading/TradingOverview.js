@@ -4,6 +4,7 @@ import { Modal } from '../../layout/Modal';
 import { SelectLocationForm } from './SelectLocationForm';
 import { TradingLocation } from './TradingLocation';
 import { getSelectedLocations } from '../locations/LocationsSlice';
+import { CreateLocationForm } from '../locations/CreateLocationForm';
 
 export function TradingOverview () {
   const tradingLocations = useSelector(getSelectedLocations);
@@ -15,9 +16,26 @@ export function TradingOverview () {
     <TradingLocation key={location.ident} location={location}/>
   );
 
-  function addNewLocation () {
+  function selectNewLocation () {
     setModalContent(
-      <SelectLocationForm closeForm={closeModal}/>
+      <div>
+        <SelectLocationForm closeForm={closeModal}/>
+        <button className="mt-6 text-gray-400 hover:text-gray-200" onClick={addAndSelectNewLocation}>
+          Add new Location
+        </button>
+      </div>
+    );
+    setModalVisible(true);
+  }
+
+  function addAndSelectNewLocation () {
+    setModalContent(
+      <div>
+        <CreateLocationForm closeForm={closeModal} selectAfterAdding={true}/>
+        <button className="mt-6 text-gray-400 hover:text-gray-200" onClick={selectNewLocation}>
+          Add existing Location
+        </button>
+      </div>
     );
     setModalVisible(true);
   }
@@ -31,7 +49,7 @@ export function TradingOverview () {
     <div>
       <div className="flex items-center">
         <h2 className="mr-4 text-2xl">Trading</h2>
-        <button className="py-2 px-3 ml-auto bg-orange-600 hover:bg-orange-700 rounded-sm" onClick={addNewLocation}>
+        <button className="py-2 px-3 ml-auto bg-orange-600 hover:bg-orange-700 rounded-sm" onClick={selectNewLocation}>
           Add Location
         </button>
       </div>
