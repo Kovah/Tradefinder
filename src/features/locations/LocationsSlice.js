@@ -44,6 +44,9 @@ export const locationsSlice = createSlice({
         state.selected.push(newLocation.ident);
       }
     },
+    selectExistingLocation: (state, action) => {
+      state.selected.push(action.payload);
+    },
     editLocation: (state, action) => {
       const editableLocation = state.pool.findIndex(location => {
         return location.ident === action.payload.ident;
@@ -62,7 +65,7 @@ export const locationsSlice = createSlice({
   }
 });
 
-export const {addLocation, addAndSelectLocation, editLocation} = locationsSlice.actions;
+export const {addLocation, addAndSelectLocation, selectExistingLocation, editLocation} = locationsSlice.actions;
 
 export const getLocations = state => state.locations.pool;
 export const getSelectedLocationIdents = state => state.locations.selected;

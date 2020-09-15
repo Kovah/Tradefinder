@@ -1,8 +1,9 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { getLocations, getSelectedLocationIdents } from '../locations/LocationsSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { getLocations, getSelectedLocationIdents, selectExistingLocation } from '../locations/LocationsSlice';
 
 export function SelectLocationForm (props) {
+  const dispatch = useDispatch();
   const availableLocations = useSelector(getLocations);
   const selectedLocations = useSelector(getSelectedLocationIdents);
   const locationSelect = React.createRef();
@@ -19,7 +20,7 @@ export function SelectLocationForm (props) {
     event.preventDefault();
 
     if (event.target.checkValidity()) {
-      console.log(locationSelect.current.value); //@DEBUG
+      dispatch(selectExistingLocation(locationSelect.current.value));
       props.closeForm();
     }
   }
