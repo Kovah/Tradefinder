@@ -64,8 +64,6 @@ export const locationsSlice = createSlice({
     },
 
     addItemToLocation: (state, action) => {
-      console.log(action.payload); //@DEBUG
-
       state.pool.map(location => {
         if (location.ident !== action.payload.location) {
           return;
@@ -79,11 +77,26 @@ export const locationsSlice = createSlice({
           buyValue: 0
         });
       });
+    },
+    removeItemFromLocation: (state, action) => {
+      state.pool.map(location => {
+        if (location.ident !== action.payload.location) {
+          return;
+        }
+
+        const itemIndex = location.items.findIndex(item => item.ident === action.payload.item);
+        if (itemIndex !== -1) {
+          location.items.splice(itemIndex, 1);
+        }
+      });
     }
   }
 });
 
-export const {addLocation, addAndSelectLocation, selectExistingLocation, editLocation, addItemToLocation} = locationsSlice.actions;
+export const {
+  addLocation, addAndSelectLocation, selectExistingLocation, editLocation,
+  addItemToLocation, removeItemFromLocation
+} = locationsSlice.actions;
 
 export const getLocations = state => state.locations.pool;
 export const getSelectedLocationIdents = state => state.locations.selected;

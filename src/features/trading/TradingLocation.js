@@ -10,7 +10,7 @@ export function TradingLocation (props) {
   const [modalContent, setModalContent] = React.useState('');
 
   const items = props.location.items.map(item =>
-    <TradingItem item={item} location={props.location.ident} key={item.ident}/>
+    <TradingItem item={item} locationIdent={props.location.ident} key={item.ident}/>
   );
 
   function selectNewItem () {
