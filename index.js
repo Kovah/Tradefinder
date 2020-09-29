@@ -7,7 +7,7 @@ import App from './src/App';
 import store from './src/app/store';
 import { saveState } from './src/app/localstorage';
 
-export const appVersion = 1599727940;
+export const appVersion = 1601423695;
 
 store.subscribe(() => {
   saveState(store.getState());
