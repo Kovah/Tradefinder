@@ -16,8 +16,11 @@ module.exports = {
           '900': '#212529',
           '950': '#121417',
         }
+      },
+      fontSize: {
+        'xxs': '.65rem'
       }
-    },
+    }
   },
   variants: {},
   plugins: [],

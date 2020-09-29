@@ -61,11 +61,29 @@ export const locationsSlice = createSlice({
       }
 
       state.pool[editableLocation].name = action.payload.newName;
+    },
+
+    addItemToLocation: (state, action) => {
+      console.log(action.payload); //@DEBUG
+
+      state.pool.map(location => {
+        if (location.ident !== action.payload.location) {
+          return;
+        }
+
+        location.items.push({
+          ident: action.payload.item,
+          sellAmount: 0,
+          sellValue: 0,
+          buyAmount: 0,
+          buyValue: 0
+        });
+      });
     }
   }
 });
 
-export const {addLocation, addAndSelectLocation, selectExistingLocation, editLocation} = locationsSlice.actions;
+export const {addLocation, addAndSelectLocation, selectExistingLocation, editLocation, addItemToLocation} = locationsSlice.actions;
 
 export const getLocations = state => state.locations.pool;
 export const getSelectedLocationIdents = state => state.locations.selected;
