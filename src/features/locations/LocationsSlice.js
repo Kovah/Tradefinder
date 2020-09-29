@@ -78,6 +78,18 @@ export const locationsSlice = createSlice({
         });
       });
     },
+    updateItemValue: (state, action) => {
+      state.pool.map(location => {
+        if (location.ident !== action.payload.location) {
+          return;
+        }
+
+        const itemIndex = location.items.findIndex(item => item.ident === action.payload.item.ident);
+        if (itemIndex !== -1) {
+          location.items.splice(itemIndex, 1, action.payload.item);
+        }
+      });
+    },
     removeItemFromLocation: (state, action) => {
       state.pool.map(location => {
         if (location.ident !== action.payload.location) {
@@ -95,7 +107,7 @@ export const locationsSlice = createSlice({
 
 export const {
   addLocation, addAndSelectLocation, selectExistingLocation, editLocation,
-  addItemToLocation, removeItemFromLocation
+  addItemToLocation, updateItemValue, removeItemFromLocation
 } = locationsSlice.actions;
 
 export const getLocations = state => state.locations.pool;

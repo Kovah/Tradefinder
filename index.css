@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.location-item:last-of-type {
+  border-bottom: 0;
+}
