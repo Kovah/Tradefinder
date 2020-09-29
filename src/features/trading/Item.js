@@ -3,7 +3,7 @@ import { getItems } from '../items/itemsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeItemFromLocation, updateItemValue } from '../locations/LocationsSlice';
 
-export function TradingItem (props) {
+export function Item (props) {
   const dispatch = useDispatch();
   const dataChanged = useRef(false);
 
@@ -28,10 +28,10 @@ export function TradingItem (props) {
         location: props.locationIdent,
         item: {
           ident: props.item.ident,
-          buyAmount: buyAmount,
-          buyValue: buyValue,
-          sellAmount: sellAmount,
-          sellValue: sellValue
+          buyAmount: parseFloat(buyAmount),
+          buyValue: parseFloat(buyValue),
+          sellAmount: parseFloat(sellAmount),
+          sellValue: parseFloat(sellValue)
         }
       }));
     }

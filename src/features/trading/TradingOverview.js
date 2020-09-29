@@ -2,9 +2,10 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Modal } from '../../layout/Modal';
 import { SelectLocationForm } from './SelectLocationForm';
-import { TradingLocation } from './TradingLocation';
+import { Location } from './Location';
 import { getSelectedLocations } from '../locations/LocationsSlice';
 import { CreateLocationForm } from '../locations/CreateLocationForm';
+import { Trades } from './Trades';
 
 export function TradingOverview () {
   const tradingLocations = useSelector(getSelectedLocations);
@@ -13,7 +14,7 @@ export function TradingOverview () {
   const [modalContent, setModalContent] = React.useState('');
 
   const locationDisplay = tradingLocations.map(location =>
-    <TradingLocation key={location.ident} location={location}/>
+    <Location key={location.ident} location={location}/>
   );
 
   function selectNewLocation () {
@@ -54,8 +55,17 @@ export function TradingOverview () {
         </button>
       </div>
 
-      <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-3">
-        {locationDisplay}
+      <div className="mt-6 grid grid-cols-1 md:grid-cols-5 gap-3">
+        <div className="col-span-3">
+          <h3 className="text-xl mb-2">Locations</h3>
+          <div className="grid gap-3">
+            {locationDisplay}
+          </div>
+        </div>
+        <div className="col-span-2">
+          <h3 className="text-xl mb-2">Trades</h3>
+          <Trades/>
+        </div>
       </div>
 
       {modalVisible &&

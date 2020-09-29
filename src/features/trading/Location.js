@@ -2,15 +2,15 @@ import React from 'react';
 import { Modal } from '../../layout/Modal';
 import { CreateItemForm } from '../items/CreateItemForm';
 import { SelectItemForm } from './SelectItemForm';
-import { TradingItem } from './TradingItem';
+import { Item } from './Item';
 
-export function TradingLocation (props) {
+export function Location (props) {
 
   const [modalVisible, setModalVisible] = React.useState(false);
   const [modalContent, setModalContent] = React.useState('');
 
   const items = props.location.items.map(item =>
-    <TradingItem item={item} locationIdent={props.location.ident} key={item.ident}/>
+    <Item item={item} locationIdent={props.location.ident} key={item.ident}/>
   );
 
   function selectNewItem () {
@@ -45,9 +45,9 @@ export function TradingLocation (props) {
   return (
     <div data-ident={props.location.ident} className="border border-gray-700 p-3 rounded-sm">
       <div className="flex items-center">
-        <h3 className="text-xl">{props.location.name}</h3>
+        <h4 className="text-xl">{props.location.name}</h4>
         <button
-          className="py-1 px-2 ml-auto text-xs border border-orange-600 hover:border-orange-700 hover:bg-gray-850 rounded-sm"
+          className="py-1 px-2 ml-auto text-xs border border-orange-800 hover:border-orange-900 hover:bg-gray-850 rounded-sm"
           onClick={selectNewItem}>
           Add Item
         </button>
