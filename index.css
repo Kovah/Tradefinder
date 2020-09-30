@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.title {
+  text-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
 .location-item:last-of-type {
   border-bottom: 0;
 }
