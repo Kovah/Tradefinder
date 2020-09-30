@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import { editLocation } from './LocationsSlice';
+import { deleteLocation, editLocation } from './LocationsSlice';
 
 export function EditLocationForm (props) {
   const dispatch = useDispatch();
@@ -16,6 +16,13 @@ export function EditLocationForm (props) {
     }
   }
 
+  function doDeleteLocation () {
+    if (confirm('Do you really want to delete this location? Any associated items and trades will be lost.')) {
+      dispatch(deleteLocation(props.ident));
+      props.closeForm();
+    }
+  }
+
   return (
     <form onSubmit={handleSubmit}>
       <h3 className="text-2xl mb-4">Edit {props.oldName}</h3>
@@ -25,9 +32,15 @@ export function EditLocationForm (props) {
       <input type="text" id="item-name" value={name} minLength="1" autoFocus required
         onChange={e => setName(e.target.value)} className="w-full py-2 px-3 mb-4 rounded-sm bg-gray-700 shadow-sm"/>
 
-      <button type="submit" className="py-2 px-3 bg-orange-600 hover:bg-orange-700 rounded-sm">
-        Update Location
-      </button>
+      <div className="flex items-center">
+        <button type="submit" className="mr-3 py-2 px-3 bg-orange-600 hover:bg-orange-700 rounded-sm">
+          Update Location
+        </button>
+        <button type="button" onClick={doDeleteLocation}
+          className="ml-auto py-2 px-3 text-sm border border-red-700 hover:border-red-800 hover:bg-gray-850 rounded-sm">
+          Delete Location
+        </button>
+      </div>
     </form>
   );
 }
