@@ -44,11 +44,17 @@ export const itemsSlice = createSlice({
       }
 
       state[editableItem].name = action.payload.newName;
+    },
+    deleteItem: (state, action) => {
+      const itemIndex = state.findIndex(item => item.ident === action.payload);
+      if (itemIndex !== -1) {
+        state.splice(itemIndex, 1);
+      }
     }
   }
 });
 
-export const {addItem, editItem} = itemsSlice.actions;
+export const {addItem, editItem, deleteItem} = itemsSlice.actions;
 
 export const getItems = state => state.items;
 

@@ -110,13 +110,21 @@ export const locationsSlice = createSlice({
           location.items.splice(itemIndex, 1);
         }
       });
+    },
+    removeItemFromAllLocations: (state, action) => {
+      state.pool.map(location => {
+        const itemIndex = location.items.findIndex(item => item.ident === action.payload);
+        if (itemIndex !== -1) {
+          location.items.splice(itemIndex, 1);
+        }
+      });
     }
   }
 });
 
 export const {
   addLocation, addAndSelectLocation, selectExistingLocation, editLocation, deleteLocation,
-  addItemToLocation, updateItemValue, removeItemFromLocation
+  addItemToLocation, updateItemValue, removeItemFromLocation, removeItemFromAllLocations
 } = locationsSlice.actions;
 
 export const getLocations = state => state.locations.pool;
