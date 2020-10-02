@@ -49,20 +49,20 @@ export function TradingOverview () {
   return (
     <div>
       <div className="flex items-center">
-        <h2 className="mr-4 text-2xl">Trading</h2>
+        <h2 className="mr-4 text-2xl font-bold">Trading</h2>
         <button className="py-2 px-3 ml-auto text-sm bg-orange-600 hover:bg-orange-700 rounded-sm" onClick={selectNewLocation}>
           Add Location
         </button>
       </div>
 
-      <div className="mt-4 grid grid-cols-1 md:grid-cols-5 gap-3">
-        <div className="col-span-3">
+      <div className="mt-4 grid grid-cols-1 md:grid-cols-5 gap-5 md:gap-3">
+        <div className="md:col-span-3">
           <h3 className="text-xl mb-2">Locations</h3>
           <div className="grid gap-2">
             {locationDisplay}
           </div>
         </div>
-        <div className="col-span-2">
+        <div className="md:col-span-2">
           <h3 className="text-xl mb-2">Trades</h3>
           <Trades/>
         </div>

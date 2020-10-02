@@ -40,11 +40,10 @@ export function ItemOverview () {
   return (
     <div className="relative">
       <div className="flex items-center">
-        <h2 className="mr-4 text-2xl">Items</h2>
-        <button
-          className="py-2 px-3 ml-auto bg-orange-600 hover:bg-orange-700 rounded-sm"
+        <h2 className="mr-4 text-2xl font-bold">Items</h2>
+        <button className="py-2 px-3 ml-auto text-sm bg-orange-600 hover:bg-orange-700 rounded-sm"
           onClick={toggleCreateForm}>
-          Add +
+          Add Item
         </button>
       </div>
 
