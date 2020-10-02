@@ -3,6 +3,7 @@ import { loadState } from './localstorage';
 import { appVersion } from '../../index';
 import itemsReducer from '../features/items/itemsSlice';
 import locationsReducer from '../features/locations/LocationsSlice';
+import optionsReducer from '../features/options/OptionsSlice';
 
 const persistedState = loadState();
 
@@ -24,7 +25,8 @@ export default configureStore({
   reducer: {
     items: itemsReducer,
     locations: locationsReducer,
-    appVersion: appVersionReducer
+    appVersion: appVersionReducer,
+    options: optionsReducer
   },
   preloadedState: persistedState
 });

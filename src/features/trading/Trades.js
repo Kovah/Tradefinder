@@ -1,11 +1,9 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getLocations } from '../locations/LocationsSlice';
 import { getItems } from '../items/itemsSlice';
 
 export function Trades () {
-  const dispatch = useDispatch();
-
   const allItems = useSelector(getItems);
   const locations = useSelector(getLocations);
 
