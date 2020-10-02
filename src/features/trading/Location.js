@@ -3,8 +3,11 @@ import { Modal } from '../../layout/Modal';
 import { CreateItemForm } from '../items/CreateItemForm';
 import { SelectItemForm } from './SelectItemForm';
 import { Item } from './Item';
+import { useDispatch } from 'react-redux';
+import { deselectLocation } from '../locations/LocationsSlice';
 
 export function Location (props) {
+  const dispatch = useDispatch();
 
   const [modalVisible, setModalVisible] = React.useState(false);
   const [modalContent, setModalContent] = React.useState('');
@@ -37,6 +40,12 @@ export function Location (props) {
     setModalVisible(true);
   }
 
+  function removeLocation () {
+    if (confirm('Do you really want to remove this location from the trades? All associated items will be deleted. The location will still be available in the location list.')) {
+      dispatch(deselectLocation(props.location.ident));
+    }
+  }
+
   function closeModal () {
     setModalVisible(false);
     setModalContent('');
@@ -50,6 +59,11 @@ export function Location (props) {
           className="py-1 px-2 ml-auto text-xs border border-orange-800 hover:border-orange-900 hover:bg-gray-850 rounded-sm"
           onClick={selectNewItem}>
           Add Item
+        </button>
+        <button
+          className="py-1 px-2 ml-1 text-xs border border-gray-700 hover:border-red-900 hover:bg-red-800 hover:text-white rounded-sm"
+          onClick={removeLocation} title="Remove this Location">
+          &times;
         </button>
       </div>
 

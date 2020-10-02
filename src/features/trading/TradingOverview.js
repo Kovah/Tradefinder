@@ -50,7 +50,8 @@ export function TradingOverview () {
     <div>
       <div className="flex items-center">
         <h2 className="mr-4 text-2xl font-bold">Trading</h2>
-        <button className="py-2 px-3 ml-auto text-sm bg-orange-600 hover:bg-orange-700 rounded-sm" onClick={selectNewLocation}>
+        <button className="py-2 px-3 ml-auto text-sm bg-orange-600 hover:bg-orange-700 rounded-sm"
+          onClick={selectNewLocation}>
           Add Location
         </button>
       </div>
@@ -59,7 +60,16 @@ export function TradingOverview () {
         <div className="md:col-span-3">
           <h3 className="text-xl mb-2">Locations</h3>
           <div className="grid gap-2">
-            {locationDisplay}
+            {tradingLocations.length > 0 &&
+            locationDisplay
+            }
+            {tradingLocations.length === 0 &&
+            <div className="text-center my-6">
+              <span className=" opacity-25">No locations selected yet.</span>
+              &nbsp;
+              <button onClick={selectNewLocation} className="opacity-50 hover:opacity-100">Select one</button>
+            </div>
+            }
           </div>
         </div>
         <div className="md:col-span-2">

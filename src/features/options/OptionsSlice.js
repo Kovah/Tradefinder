@@ -8,7 +8,6 @@ export const optionsSlice = createSlice({
   },
   reducers: {
     changeSavedTab: (state, action) => {
-      console.log(action.payload, state); //@DEBUG
       state.savedTab = action.payload;
     }
   }

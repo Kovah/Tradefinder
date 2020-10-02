@@ -62,9 +62,21 @@ export const locationsSlice = createSlice({
 
       state.pool[editableLocation].name = action.payload.newName;
     },
+    deselectLocation: (state, action) => {
+      // Delete location from selected locations
+      const selectedIndex = state.selected.findIndex(location => location === action.payload);
+      state.selected.splice(selectedIndex, 1);
+
+      // Remove all items from the location
+      state.pool.map(location => {
+        if (location.ident === action.payload) {
+          location.items = [];
+        }
+      });
+    },
     deleteLocation: (state, action) => {
       // Delete location from selected locations
-      const selectedIndex = state.selected.findIndex(location => location.ident === action.payload)
+      const selectedIndex = state.selected.findIndex(location => location === action.payload)
       state.selected.splice(selectedIndex, 1);
 
       // Delete location from location pool
@@ -123,7 +135,7 @@ export const locationsSlice = createSlice({
 });
 
 export const {
-  addLocation, addAndSelectLocation, selectExistingLocation, editLocation, deleteLocation,
+  addLocation, addAndSelectLocation, selectExistingLocation, editLocation, deselectLocation, deleteLocation,
   addItemToLocation, updateItemValue, removeItemFromLocation, removeItemFromAllLocations
 } = locationsSlice.actions;
 
