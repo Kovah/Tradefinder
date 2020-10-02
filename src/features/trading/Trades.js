@@ -81,6 +81,9 @@ export function Trades () {
       {allTrades.length > 0 &&
       allTrades
       }
+      {allTrades.length === 0 &&
+      <div className="text-center my-6 opacity-25">No trades available yet.</div>
+      }
     </div>
   );
 }
