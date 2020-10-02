@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 
 import { Provider } from 'react-redux';
 
-import App from './src/App';
 import store from './src/app/store';
 import { saveState } from './src/app/localstorage';
+import { App } from './src/App';
 
 export const appVersion = 1601423695;
 

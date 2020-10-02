@@ -69,11 +69,16 @@ export function Item (props) {
       <td rowSpan="2" className="py-1 pr-3 align-text-top text-left">
         <h4 className="text-sm">{itemDetails.name}</h4>
       </td>
-      <td colSpan="2" className="pt-1 text-sm text-center text-green-500">Buys</td>
-      <td colSpan="2" className="pt-1 text-sm text-center text-red-500">Sells</td>
-      <td rowSpan="2" className="align-text-top">
-        <button className="text-sm text-gray-500 hover:text-red-500 focus:text-red-500 py-1 px-2"
-          onClick={doRemoveItem} title="Remove this Item">&times;</button>
+      <td colSpan="2" className="pt-1 text-xs text-center text-green-500">Buys</td>
+      <td colSpan="2" className="pt-1 ">
+        <div className="grid grid-cols-3 items-center">
+          <div>&nbsp;</div>
+          <div className="text-red-500 text-xs text-center">Sells</div>
+          <div className="text-right">
+            <button className="text-sm text-gray-500 hover:text-red-500 focus:text-red-500 py-0 px-2"
+              onClick={doRemoveItem} title="Remove this Item">&times;</button>
+          </div>
+        </div>
       </td>
     </tr>
     <tr>

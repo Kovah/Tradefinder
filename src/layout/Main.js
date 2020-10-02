@@ -36,7 +36,7 @@ export function Main () {
           Items
         </div>
       </div>
-      <div className="p-6 bg-gray-800 shadow-lg rounded-sm rounded-t-none">
+      <div className="p-3 md:p-6 bg-gray-800 shadow-lg rounded-sm rounded-t-none">
         {tabContent}
       </div>
 

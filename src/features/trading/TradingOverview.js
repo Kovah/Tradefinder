@@ -55,10 +55,10 @@ export function TradingOverview () {
         </button>
       </div>
 
-      <div className="mt-6 grid grid-cols-1 md:grid-cols-5 gap-3">
+      <div className="mt-4 grid grid-cols-1 md:grid-cols-5 gap-3">
         <div className="col-span-3">
           <h3 className="text-xl mb-2">Locations</h3>
-          <div className="grid gap-3">
+          <div className="grid gap-2">
             {locationDisplay}
           </div>
         </div>

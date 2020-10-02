@@ -43,9 +43,9 @@ export function Location (props) {
   }
 
   return (
-    <div data-ident={props.location.ident} className="border border-gray-700 p-3 rounded-sm">
+    <div data-ident={props.location.ident} className="border border-gray-700 p-2 rounded-sm">
       <div className="flex items-center">
-        <h4 className="text-xl">{props.location.name}</h4>
+        <h4 className="text-lg font-bold">{props.location.name}</h4>
         <button
           className="py-1 px-2 ml-auto text-xs border border-orange-800 hover:border-orange-900 hover:bg-gray-850 rounded-sm"
           onClick={selectNewItem}>
