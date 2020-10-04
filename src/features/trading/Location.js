@@ -12,6 +12,10 @@ export function Location (props) {
   const [modalVisible, setModalVisible] = React.useState(false);
   const [modalContent, setModalContent] = React.useState('');
 
+  const locationClass = 'border-l border-r border-b border-gray-700 p-1 rounded-sm'
+    + (props.isFirst ? ' rounded-t-sm border-t' : '')
+    + (props.isLast ? ' rounded-b-sm' : '');
+
   const items = props.location.items.map(item =>
     <Item item={item} locationIdent={props.location.ident} key={item.ident}/>
   );
@@ -52,7 +56,7 @@ export function Location (props) {
   }
 
   return (
-    <div data-ident={props.location.ident} className="border border-gray-700 p-2 rounded-sm">
+    <div data-ident={props.location.ident} className={locationClass}>
       <div className="flex items-center">
         <h4 className="text-lg font-bold">{props.location.name}</h4>
         <button

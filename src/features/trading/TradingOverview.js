@@ -13,8 +13,8 @@ export function TradingOverview () {
   const [modalVisible, setModalVisible] = React.useState(false);
   const [modalContent, setModalContent] = React.useState('');
 
-  const locationDisplay = tradingLocations.map(location =>
-    <Location key={location.ident} location={location}/>
+  const locationDisplay = tradingLocations.map((location, index, data) =>
+    <Location key={location.ident} location={location} isFirst={index === 0} isLast={index === data.length - 1}/>
   );
 
   function selectNewLocation () {
@@ -56,10 +56,10 @@ export function TradingOverview () {
         </button>
       </div>
 
-      <div className="mt-4 grid grid-cols-1 md:grid-cols-5 gap-5 md:gap-3">
+      <div className="mt-4 grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4">
         <div className="md:col-span-3">
-          <h3 className="text-xl mb-2">Locations</h3>
-          <div className="grid gap-2">
+          <h3 className="text-lg mb-2">Locations</h3>
+          <div>
             {tradingLocations.length > 0 &&
             locationDisplay
             }
@@ -73,7 +73,7 @@ export function TradingOverview () {
           </div>
         </div>
         <div className="md:col-span-2">
-          <h3 className="text-xl mb-2">Trades</h3>
+          <h3 className="text-lg mb-2">Trades</h3>
           <Trades/>
         </div>
       </div>
