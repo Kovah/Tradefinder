@@ -63,7 +63,7 @@ export function Item (props) {
   }
 
   return (
-    <div className="location-item border-b border-gray-900 py-1 grid grid-cols-1 sm:grid-cols-3 gap-1 text-xs">
+    <div className="location-item border-b border-gray-850 py-1 grid grid-cols-1 sm:grid-cols-3 gap-1 text-xs">
 
       <h4 className="break-words">
         {itemDetails.name}
