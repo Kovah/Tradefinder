@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { getLocations } from '../locations/LocationsSlice';
 import { getItems } from '../items/itemsSlice';
+import { formatNumber } from '../../app/helper';
 
 export function Trades () {
   const allItems = useSelector(getItems);
@@ -66,12 +67,12 @@ export function Trades () {
         <div className="flex-1 text-right text-green-500">{trade.to}</div>
       </div>
       <div className="flex items-center justify-between my-2">
-        <div className="flex-1 text-sm text-gray-500">Buy {trade.amount} @ <span className="text-red-500">{trade.buyFor}</span></div>
+        <div className="flex-1 text-sm text-gray-500">Buy {formatNumber(trade.amount)} @ <span className="text-red-500">{formatNumber(trade.buyFor)}</span></div>
         <div className="flex-1 px-2 text-sm text-center">{trade.item}</div>
-        <div className="flex-1 pl-2 text-sm text-right text-gray-500">Sell @ <span className="text-green-500">{trade.sellFor}</span></div>
+        <div className="flex-1 pl-2 text-sm text-right text-gray-500">Sell @ <span className="text-green-500">{formatNumber(trade.sellFor)}</span></div>
       </div>
       <div className="text-right text-sm">
-        Profit: {trade.profitTotal.toFixed(2)}
+        Profit: {formatNumber(trade.profitTotal)}
       </div>
     </div>
   );
