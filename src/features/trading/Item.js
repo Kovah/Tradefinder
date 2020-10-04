@@ -7,8 +7,7 @@ export function Item (props) {
   const dispatch = useDispatch();
   const dataChanged = useRef(false);
 
-  const inputClass = 'w-full p-1 rounded-sm bg-gray-800 border border-gray-850 text-xs';
-  const inputLabelClass = 'block text-center text-xxs text-gray-600 uppercase';
+  const inputClass = 'p-1 rounded-sm bg-gray-800 border border-gray-850 text-xxs text-right';
 
   const allItems = useSelector(getItems);
   const itemDetails = allItems.find(item => {
@@ -64,41 +63,38 @@ export function Item (props) {
   }
 
   return (
-    <tbody className="location-item border-b border-gray-900 py-1">
-    <tr>
-      <td rowSpan="2" className="py-1 pr-3 align-text-top text-left">
-        <h4 className="text-sm">{itemDetails.name}</h4>
-      </td>
-      <td colSpan="2" className="pt-1 text-xs text-center text-green-500">Buys</td>
-      <td colSpan="2" className="pt-1 ">
-        <div className="grid grid-cols-3 items-center">
-          <div>&nbsp;</div>
-          <div className="text-red-500 text-xs text-center">Sells</div>
-          <div className="text-right">
-            <button className="text-sm text-gray-500 hover:text-red-500 focus:text-red-500 py-0 px-2"
-              onClick={doRemoveItem} title="Remove this Item">&times;</button>
-          </div>
+    <div className="location-item border-b border-gray-900 py-1 grid grid-cols-1 sm:grid-cols-3 gap-1 text-xs">
+
+      <h4 className="break-words">
+        {itemDetails.name}
+        <button className="text-sm text-gray-500 hover:text-red-500 focus:text-red-500 py-0 px-2"
+          onClick={doRemoveItem} title="Remove this Item">&times;</button>
+      </h4>
+
+      <div>
+        <div className="grid grid-cols-3 gap-1 mb-1 text-center text-gray-600">
+          <div className="text-xxs pt-1">Amount</div>
+          <div className="uppercase text-green-500">Buys</div>
+          <div className="text-xxs pt-1">Value</div>
         </div>
-      </td>
-    </tr>
-    <tr>
-      <td className="pb-1">
-        <label className={inputLabelClass}>Amount</label>
-        <input type="number" value={buyAmount} className={inputClass} onChange={changeBuyAmount}/>
-      </td>
-      <td className="pb-1 pr-1">
-        <label className={inputLabelClass}>Value</label>
-        <input type="number" value={buyValue} className={inputClass} onChange={changeBuyValue}/>
-      </td>
-      <td className="pb-1 pl-1">
-        <label className={inputLabelClass}>Value</label>
-        <input type="number" value={sellValue} className={inputClass} onChange={changeSellValue}/>
-      </td>
-      <td className="pb-1">
-        <label className={inputLabelClass}>Amount</label>
-        <input type="number" value={sellAmount} className={inputClass} onChange={changeSellAmount}/>
-      </td>
-    </tr>
-    </tbody>
+        <div className="grid grid-cols-2 gap-1">
+          <input type="number" value={buyAmount} className={inputClass} step="0.01" onChange={changeBuyAmount}/>
+          <input type="number" value={buyValue} className={inputClass} step="0.01" onChange={changeBuyValue}/>
+        </div>
+      </div>
+
+      <div>
+        <div className="grid grid-cols-3 gap-1 mb-1 text-center text-gray-600">
+          <div className="text-xxs pt-1">Value</div>
+          <div className="uppercase text-red-500">Sells</div>
+          <div className="text-xxs pt-1">Amount</div>
+        </div>
+        <div className="grid grid-cols-2 gap-1">
+          <input type="number" value={sellValue} className={inputClass} step="0.01" onChange={changeSellValue}/>
+          <input type="number" value={sellAmount} className={inputClass} step="0.01" onChange={changeSellAmount}/>
+        </div>
+      </div>
+
+    </div>
   );
 }

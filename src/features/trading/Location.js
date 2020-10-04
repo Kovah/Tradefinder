@@ -60,21 +60,19 @@ export function Location (props) {
       <div className="flex items-center">
         <h4 className="text-lg font-bold">{props.location.name}</h4>
         <button
-          className="py-1 px-2 ml-auto text-xs border border-orange-800 hover:border-orange-900 hover:bg-gray-850 rounded-sm"
+          className="py-1 px-2 ml-auto text-xxs border border-orange-800 hover:border-orange-900 hover:bg-gray-850 rounded-sm"
           onClick={selectNewItem}>
           Add Item
         </button>
         <button
-          className="py-1 px-2 ml-1 text-xs border border-gray-700 hover:border-red-900 hover:bg-red-800 hover:text-white rounded-sm"
+          className="py-1 px-2 ml-1 text-xxs border border-gray-700 hover:border-red-900 hover:bg-red-800 hover:text-white rounded-sm"
           onClick={removeLocation} title="Remove this Location">
           &times;
         </button>
       </div>
 
       {props.location.items.length > 0 &&
-      <table className="table-auto">
-        {items}
-      </table>
+      <div>{items}</div>
       }
 
       {modalVisible &&
