@@ -18,7 +18,7 @@ export function DataHandling () {
     setModalContent(
       <div>
         <h3 className="text-2xl mb-4">Export your current Data</h3>
-        <pre className="p-3 text-xs border border-gray-700 break-all whitespace-normal">{btoa(JSON.stringify(store.getState()))}</pre>
+        <pre className="p-3 text-xxs border border-gray-700 break-all whitespace-normal max-h-screen overflow-y-auto">{JSON.stringify(store.getState())}</pre>
       </div>
     );
     setModalVisible(true);

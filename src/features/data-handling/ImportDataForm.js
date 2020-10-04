@@ -11,7 +11,7 @@ export function ImportDataForm () {
       let importedData;
 
       try {
-        importedData = JSON.parse(atob(importData));
+        importedData = JSON.parse(importData);
       } catch (e) {
         alert('There was an error importing your data. Probably the data is broken or parts are missing.');
         return;
