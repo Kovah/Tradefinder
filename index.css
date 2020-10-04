@@ -28,3 +28,7 @@
 .location-item:last-of-type {
   border-bottom: 0;
 }
+
+.cursor-zoom-out {
+  cursor: zoom-out;
+}
