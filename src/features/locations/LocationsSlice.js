@@ -99,6 +99,10 @@ export const locationsSlice = createSlice({
       const poolIndex = state.pool.findIndex(poolItem => poolItem.ident === action.payload);
       state.pool.splice(poolIndex, 1);
     },
+    deleteAllLocations: (state, action) => {
+      state.selected = [];
+      state.pool = [];
+    },
 
     addItemToLocation: (state, action) => {
       state.pool.map(location => {
@@ -159,7 +163,7 @@ export const locationsSlice = createSlice({
 
 export const {
   addLocation, addAndSelectLocation, selectExistingLocation, editLocation, deselectLocation,
-  toggleLocationItemVisibility, deleteLocation,
+  toggleLocationItemVisibility, deleteLocation, deleteAllLocations,
   addItemToLocation, updateItemValue, removeItemFromLocation,
   removeItemFromAllLocations, toggleAllLocationItemVisibilities
 } = locationsSlice.actions;

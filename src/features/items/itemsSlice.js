@@ -50,11 +50,14 @@ export const itemsSlice = createSlice({
       if (itemIndex !== -1) {
         state.splice(itemIndex, 1);
       }
+    },
+    deleteAllItems: (state, action) => {
+      state.splice(0, state.length);
     }
   }
 });
 
-export const {addItem, editItem, deleteItem} = itemsSlice.actions;
+export const {addItem, editItem, deleteItem, deleteAllItems} = itemsSlice.actions;
 
 export const getItems = state => state.items;
 
