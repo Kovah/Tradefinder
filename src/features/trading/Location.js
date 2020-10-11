@@ -4,7 +4,7 @@ import { CreateItemForm } from '../items/CreateItemForm';
 import { SelectItemForm } from './SelectItemForm';
 import { Item } from './Item';
 import { useDispatch } from 'react-redux';
-import { deselectLocation } from '../locations/LocationsSlice';
+import { deselectLocation, toggleLocationItemVisibility } from '../locations/LocationsSlice';
 
 export function Location (props) {
   const dispatch = useDispatch();
@@ -16,9 +16,16 @@ export function Location (props) {
     + (props.isFirst ? ' rounded-t-sm border-t' : '')
     + (props.isLast ? ' rounded-b-sm' : '');
 
+  const headingsTitle = props.location.itemsVisible ? 'Minimize this Location' : 'Maximize this Location';
+  const itemWrapperClass = props.location.itemsVisible ? 'block' : 'hidden';
+
   const items = props.location.items.map(item =>
     <Item item={item} locationIdent={props.location.ident} key={item.ident}/>
   );
+
+  function toggleItemsVisible () {
+    dispatch(toggleLocationItemVisibility(props.location.ident));
+  }
 
   function selectNewItem () {
     setModalContent(
@@ -58,7 +65,12 @@ export function Location (props) {
   return (
     <div data-ident={props.location.ident} className={locationClass}>
       <div className="flex items-center">
-        <h4 className="text-lg font-bold">{props.location.name}</h4>
+        <button title={headingsTitle} onClick={toggleItemsVisible} className="mr-1 text-xxs cursor-pointer font-mono">
+          {props.location.itemsVisible ? <span>-</span> : <span>+</span>}
+        </button>
+        <h4 className="text-lg font-bold">
+          {props.location.name}
+        </h4>
         <button
           className="py-1 px-2 ml-auto text-xxs border border-orange-800 hover:border-orange-900 hover:bg-gray-850 rounded-sm"
           onClick={selectNewItem}>
@@ -72,7 +84,7 @@ export function Location (props) {
       </div>
 
       {props.location.items.length > 0 &&
-      <div>{items}</div>
+      <div className={itemWrapperClass}>{items}</div>
       }
 
       {modalVisible &&

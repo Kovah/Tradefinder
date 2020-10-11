@@ -28,9 +28,9 @@ export const locationsSlice = createSlice({
       '27761487-d952-4025-a0ca-edca4f934d9d'
     ],
     pool: [
-      {ident: 'd572c7f8-df50-46cf-bc0c-c2440981c740', name: 'Berlin', items: []},
-      {ident: '27761487-d952-4025-a0ca-edca4f934d9d', name: 'London', items: []},
-      {ident: '1c714a4e-1510-4055-b91b-daa358b5d2f0', name: 'New York', items: []}
+      {ident: 'd572c7f8-df50-46cf-bc0c-c2440981c740', name: 'Berlin', items: [], itemsVisible: true},
+      {ident: '27761487-d952-4025-a0ca-edca4f934d9d', name: 'London', items: [], itemsVisible: true},
+      {ident: '1c714a4e-1510-4055-b91b-daa358b5d2f0', name: 'New York', items: [], itemsVisible: true}
     ]
   },
   reducers: {
@@ -62,6 +62,11 @@ export const locationsSlice = createSlice({
 
       state.pool[editableLocation].name = action.payload.newName;
     },
+    toggleLocationItemVisibility: (state, action) => {
+      const locationIndex = state.pool.findIndex(location => location.ident === action.payload);
+
+      state.pool[locationIndex].itemsVisible = !state.pool[locationIndex].itemsVisible;
+    },
     deselectLocation: (state, action) => {
       // Delete location from selected locations
       const selectedIndex = state.selected.findIndex(location => location === action.payload);
@@ -76,11 +81,11 @@ export const locationsSlice = createSlice({
     },
     deleteLocation: (state, action) => {
       // Delete location from selected locations
-      const selectedIndex = state.selected.findIndex(location => location === action.payload)
+      const selectedIndex = state.selected.findIndex(location => location === action.payload);
       state.selected.splice(selectedIndex, 1);
 
       // Delete location from location pool
-      const poolIndex = state.pool.findIndex(poolItem => poolItem.ident === action.payload)
+      const poolIndex = state.pool.findIndex(poolItem => poolItem.ident === action.payload);
       state.pool.splice(poolIndex, 1);
     },
 
@@ -135,7 +140,8 @@ export const locationsSlice = createSlice({
 });
 
 export const {
-  addLocation, addAndSelectLocation, selectExistingLocation, editLocation, deselectLocation, deleteLocation,
+  addLocation, addAndSelectLocation, selectExistingLocation, editLocation, deselectLocation,
+  toggleLocationItemVisibility, deleteLocation,
   addItemToLocation, updateItemValue, removeItemFromLocation, removeItemFromAllLocations
 } = locationsSlice.actions;
 
