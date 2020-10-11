@@ -14,5 +14,6 @@ export function applyMigrations (data) {
 
 function apply1602446860 (data) {
   data.locations.pool.forEach(location => location.itemsVisible = true);
+  data.options.numberFormat = 'en-US';
   return data;
 }

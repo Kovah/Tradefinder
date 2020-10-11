@@ -5,11 +5,13 @@ import { TradingOverview } from '../features/trading/TradingOverview';
 import { About } from '../features/about/About';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeSavedTab, getSavedTab } from '../features/options/OptionsSlice';
+import { Options } from '../features/options/Options';
 
 export const T_TRADING = 'TRADING';
 export const T_ITEMS = 'ITEMS';
 export const T_LOCATIONS = 'LOCATIONS';
 export const T_ABOUT = 'ABOUT';
+export const T_OPTIONS = 'OPTIONS';
 
 export function Main () {
   const dispatch = useDispatch();
@@ -26,6 +28,8 @@ export function Main () {
     tabContent = <TradingOverview/>;
   } else if (activeTab === T_ABOUT) {
     tabContent = <About/>;
+  } else if (activeTab === T_OPTIONS) {
+    tabContent = <Options/>;
   }
 
   function changeTab (toTab) {
@@ -54,10 +58,16 @@ export function Main () {
           Locations
         </div>
         <div className={
-          'py-3 px-4 rounded-tr-sm cursor-pointer ' + (activeTab === T_ITEMS ? 'bg-gray-800' : 'bg-gray-850')
+          'py-3 px-4 cursor-pointer border-r border-gray-900 ' + (activeTab === T_ITEMS ? 'bg-gray-800' : 'bg-gray-850')
         }
           onClick={() => changeTab(T_ITEMS)}>
           Items
+        </div>
+        <div className={
+          'py-3 px-4 rounded-tr-sm cursor-pointer ' + (activeTab === T_OPTIONS ? 'bg-gray-800' : 'bg-gray-850')
+        }
+          onClick={() => changeTab(T_OPTIONS)}>
+          Options
         </div>
       </div>
       <div className="p-4 bg-gray-800 shadow-lg rounded-sm rounded-t-none">
