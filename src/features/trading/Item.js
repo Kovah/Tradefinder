@@ -74,7 +74,7 @@ export function Item (props) {
       <div>
         <div className="grid grid-cols-3 gap-1 mb-1 text-center text-gray-600">
           <div className="text-xxs pt-1">Amount</div>
-          <div className="uppercase text-green-500">Buys</div>
+          <div className="uppercase text-green-500 opacity-75">Buys</div>
           <div className="text-xxs pt-1">Value</div>
         </div>
         <div className="grid grid-cols-2 gap-1">
@@ -86,7 +86,7 @@ export function Item (props) {
       <div>
         <div className="grid grid-cols-3 gap-1 mb-1 text-center text-gray-600">
           <div className="text-xxs pt-1">Value</div>
-          <div className="uppercase text-red-500">Sells</div>
+          <div className="uppercase text-red-500 opacity-75">Sells</div>
           <div className="text-xxs pt-1">Amount</div>
         </div>
         <div className="grid grid-cols-2 gap-1">

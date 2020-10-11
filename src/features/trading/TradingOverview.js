@@ -69,7 +69,7 @@ export function TradingOverview () {
         <div className="md:col-span-3">
           <div className="flex items-center mb-2">
             <button title={itemToggleTitle} onClick={toggleLocationDisplay}
-              className="mr-1 text-xxs cursor-pointer font-mono">
+              className={'mr-1 text-xxs cursor-pointer font-mono' + (tradingLocations.length === 0 ? ' hidden' : '')}>
               {locationItemsVisible ? <span>-</span> : <span>+</span>}
             </button>
             <h3 className="text-lg">Locations</h3>

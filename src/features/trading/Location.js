@@ -72,12 +72,12 @@ export function Location (props) {
           {props.location.name}
         </h4>
         <button
-          className="py-1 px-2 ml-auto text-xxs border border-orange-800 hover:border-orange-900 hover:bg-gray-850 rounded-sm"
+          className="py-1 px-2 ml-auto text-xxs border border-gray-700 hover:border-orange-700 hover:bg-orange-700 hover:text-white rounded-sm"
           onClick={selectNewItem}>
           Add Item
         </button>
         <button
-          className="py-1 px-2 ml-1 text-xxs border border-gray-700 hover:border-red-900 hover:bg-red-800 hover:text-white rounded-sm"
+          className="py-1 px-2 ml-1 text-xxs border border-gray-700 hover:border-red-800 hover:bg-red-800 hover:text-white rounded-sm"
           onClick={removeLocation} title="Remove this Location">
           &times;
         </button>
