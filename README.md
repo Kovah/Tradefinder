@@ -2,6 +2,8 @@
 
 A web tool to find the most profitable trades between two merchants. Perfect for gamers. 🎮
 
+![Browser screenshot as a preview of the tool](./preview.png)
+
 
 ## About
 
@@ -31,4 +33,3 @@ You can now access the tool via `http://localhost:1234`.
 ---
 
 Tradefinder is a project by [Kovah](https://kovah.de)  and [Contributors](https://github.com/Kovah/Tradefinder/graphs/contributors)
-
