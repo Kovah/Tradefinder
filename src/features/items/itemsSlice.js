@@ -4,12 +4,12 @@ import { v4 as uuidv4 } from 'uuid';
 export const itemsSlice = createSlice({
   name: 'items',
   initialState: [
-    {ident: uuidv4(), name: 'Crafts'},
-    {ident: uuidv4(), name: 'Fish'},
-    {ident: uuidv4(), name: 'Fur'},
-    {ident: uuidv4(), name: 'Iron'},
-    {ident: uuidv4(), name: 'Meat'},
-    {ident: uuidv4(), name: 'Wood'}
+    {ident: 'a538e52d-9c1f-4d94-b73b-653395e2dbed', name: 'Crafts'},
+    {ident: '39bb874b-e292-49e1-81bf-4098ab1a4b27', name: 'Fish'},
+    {ident: '0fe2db5a-2c94-42bb-8ba4-d88f282ea8a5', name: 'Fur'},
+    {ident: 'b12167cb-8595-467c-ae41-aa00a151d158', name: 'Iron'},
+    {ident: 'b9aae54c-c506-4101-af72-ad020993ca85', name: 'Meat'},
+    {ident: '55c6a5e5-242f-40d1-9942-2c98715b7ffb', name: 'Wood'}
   ],
   reducers: {
     addItem: (state, action) => {

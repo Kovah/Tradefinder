@@ -28,8 +28,19 @@ export const locationsSlice = createSlice({
       '27761487-d952-4025-a0ca-edca4f934d9d'
     ],
     pool: [
-      {ident: 'd572c7f8-df50-46cf-bc0c-c2440981c740', name: 'Berlin', items: [], itemsVisible: true},
-      {ident: '27761487-d952-4025-a0ca-edca4f934d9d', name: 'London', items: [], itemsVisible: true},
+      {
+        ident: 'd572c7f8-df50-46cf-bc0c-c2440981c740', name: 'Berlin', items: [
+          {ident: 'b12167cb-8595-467c-ae41-aa00a151d158', buyAmount: 120, buyValue: 740, sellAmount: 0, sellValue: 0},
+          {ident: '55c6a5e5-242f-40d1-9942-2c98715b7ffb', buyAmount: 0, buyValue: 0, sellAmount: 290, sellValue: 340}
+        ], itemsVisible: true
+      },
+      {
+        ident: '27761487-d952-4025-a0ca-edca4f934d9d', name: 'London', items: [
+          {ident: '39bb874b-e292-49e1-81bf-4098ab1a4b27', buyAmount: 93, buyValue: 515, sellAmount: 0, sellValue: 0},
+          {ident: 'b12167cb-8595-467c-ae41-aa00a151d158', buyAmount: 0, buyValue: 0, sellAmount: 690, sellValue: 210},
+          {ident: '55c6a5e5-242f-40d1-9942-2c98715b7ffb', buyAmount: 450, buyValue: 395, sellAmount: 0, sellValue: 0}
+        ], itemsVisible: true
+      },
       {ident: '1c714a4e-1510-4055-b91b-daa358b5d2f0', name: 'New York', items: [], itemsVisible: true}
     ]
   },

@@ -1,10 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { T_ABOUT } from '../../layout/Main';
 
 export const optionsSlice = createSlice({
   name: 'options',
   initialState: {
-    savedTab: T_ABOUT
+    savedTab: 'ABOUT'
   },
   reducers: {
     changeSavedTab: (state, action) => {
