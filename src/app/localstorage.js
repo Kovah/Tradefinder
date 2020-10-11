@@ -1,4 +1,5 @@
-import { appVersion } from '../../index';
+import { appVersion } from '../App';
+import { applyMigrations } from './migrations';
 
 export const loadState = () => {
   try {
@@ -14,7 +15,7 @@ export const loadState = () => {
     }
 
     if (appVersion > data.appVersion) {
-      return undefined;
+      return applyMigrations(data);
     }
 
     return data;

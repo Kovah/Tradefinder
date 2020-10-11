@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { Footer } from './layout/Footer';
 import { Header } from './layout/Header';
 import { Main } from './layout/Main';
+
+export const appVersion = 1602446860;
 
 export function App () {
   return (
