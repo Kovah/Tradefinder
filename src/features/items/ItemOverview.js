@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { getItems } from './itemsSlice';
+import { getItems } from './ItemsSlice';
 import { CreateItemForm } from './CreateItemForm';
 import { EditItemForm } from './EditItemForm';
 import { Modal } from '../../layout/Modal';

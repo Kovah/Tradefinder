@@ -99,7 +99,7 @@ export const locationsSlice = createSlice({
       const poolIndex = state.pool.findIndex(poolItem => poolItem.ident === action.payload);
       state.pool.splice(poolIndex, 1);
     },
-    deleteAllLocations: (state, action) => {
+    deleteAllLocations: (state) => {
       state.selected = [];
       state.pool = [];
     },

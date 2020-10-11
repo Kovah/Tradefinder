@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import { deleteItem, editItem } from './itemsSlice';
+import { deleteItem, editItem } from './ItemsSlice';
 import { removeItemFromAllLocations } from '../locations/LocationsSlice';
 
 export function EditItemForm (props) {

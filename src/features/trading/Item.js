@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { getItems } from '../items/itemsSlice';
+import { getItems } from '../items/ItemsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeItemFromLocation, updateItemValue } from '../locations/LocationsSlice';
 

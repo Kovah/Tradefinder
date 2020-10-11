@@ -51,7 +51,7 @@ export const itemsSlice = createSlice({
         state.splice(itemIndex, 1);
       }
     },
-    deleteAllItems: (state, action) => {
+    deleteAllItems: (state) => {
       state.splice(0, state.length);
     }
   }

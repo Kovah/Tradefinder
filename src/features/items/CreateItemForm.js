@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import { addItem } from './itemsSlice';
+import { addItem } from './ItemsSlice';
 
 export function CreateItemForm (props) {
   const dispatch = useDispatch();
