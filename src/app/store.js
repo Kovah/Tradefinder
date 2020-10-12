@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { loadState } from './localstorage';
 import { appVersion } from '../App';
-import itemsReducer from '../features/items/itemsSlice';
+import itemsReducer from '../features/items/ItemsSlice';
 import locationsReducer from '../features/locations/LocationsSlice';
 import optionsReducer from '../features/options/OptionsSlice';
 

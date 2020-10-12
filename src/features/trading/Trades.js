@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { getLocations } from '../locations/LocationsSlice';
-import { getItems } from '../items/itemsSlice';
+import { getItems } from '../items/ItemsSlice';
 import { formatNumber } from '../../app/helper';
 
 export function Trades () {

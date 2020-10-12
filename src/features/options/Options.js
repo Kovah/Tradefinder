@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeNumberFormat, getOptions } from './OptionsSlice';
 import { deleteAllLocations } from '../locations/LocationsSlice';
-import { deleteAllItems } from '../items/itemsSlice';
+import { deleteAllItems } from '../items/ItemsSlice';
 
 export function Options () {
   const dispatch = useDispatch();

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addItemToLocation } from '../locations/LocationsSlice';
-import { getItems } from '../items/itemsSlice';
+import { getItems } from '../items/ItemsSlice';
 
 export function SelectItemForm (props) {
   const dispatch = useDispatch();
