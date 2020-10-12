@@ -39,32 +39,32 @@ export function Main () {
 
   return (
     <div className="my-8">
-      <div className="flex tracking-widest text-xs">
+      <div className="flex trading-wider sm:tracking-widest text-xs">
         <div className={
-          'py-3 px-4 rounded-tl-sm cursor-pointer border-r border-gray-900 ' + (activeTab === T_ABOUT ? 'bg-gray-800' : 'bg-gray-850')
+          'py-3 px-2 sm:px-4 rounded-tl-sm cursor-pointer border-r border-gray-900 ' + (activeTab === T_ABOUT ? 'bg-gray-800' : 'bg-gray-850')
         }
           onClick={() => changeTab(T_ABOUT)}>
           About
         </div>
         <div className={
-          'py-3 px-4 cursor-pointer border-r border-gray-900 ' + (activeTab === T_TRADING ? 'bg-gray-800' : 'bg-gray-850')
+          'py-3 px-2 sm:px-4 cursor-pointer border-r border-gray-900 ' + (activeTab === T_TRADING ? 'bg-gray-800' : 'bg-gray-850')
         } onClick={() => changeTab(T_TRADING)}>
           Trading
         </div>
         <div className={
-          'py-3 px-4 cursor-pointer border-r border-gray-900 ' + (activeTab === T_LOCATIONS ? 'bg-gray-800' : 'bg-gray-850')
+          'py-3 px-2 sm:px-4 cursor-pointer border-r border-gray-900 ' + (activeTab === T_LOCATIONS ? 'bg-gray-800' : 'bg-gray-850')
         }
           onClick={() => changeTab(T_LOCATIONS)}>
           Locations
         </div>
         <div className={
-          'py-3 px-4 cursor-pointer border-r border-gray-900 ' + (activeTab === T_ITEMS ? 'bg-gray-800' : 'bg-gray-850')
+          'py-3 px-2 sm:px-4 cursor-pointer border-r border-gray-900 ' + (activeTab === T_ITEMS ? 'bg-gray-800' : 'bg-gray-850')
         }
           onClick={() => changeTab(T_ITEMS)}>
           Items
         </div>
         <div className={
-          'py-3 px-4 rounded-tr-sm cursor-pointer ' + (activeTab === T_OPTIONS ? 'bg-gray-800' : 'bg-gray-850')
+          'py-3 px-2 sm:px-4 rounded-tr-sm cursor-pointer ' + (activeTab === T_OPTIONS ? 'bg-gray-800' : 'bg-gray-850')
         }
           onClick={() => changeTab(T_OPTIONS)}>
           Options
