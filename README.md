@@ -19,6 +19,15 @@ After adding a location to the trading overview, you can add items to that locat
 Once you added at least two locations with the same item, the Tradefinder will calculate the possible trades. If a profitable trade (profit > 0) is found, it will be displayed in the trades overview on the right side.
 
 
+## Compatible Games
+
+* Elite Dangerous
+* EVE Online
+* Mount & Blade
+* No Man's Sky
+* Windward
+
+
 ## Development Setup
 
 The web tool is built using React and Tailwind CSS. Bundling is done via Parcel.
