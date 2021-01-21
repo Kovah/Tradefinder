@@ -7,16 +7,16 @@
     "url": "git+https://github.com/Kovah/Tradefinder.git"
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^1.4.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-redux": "^7.2.1",
-    "tailwindcss": "^1.8.13",
-    "uuid": "^8.3.1"
+    "@reduxjs/toolkit": "^1.5.0",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-redux": "^7.2.2",
+    "tailwindcss": "^1.9.6",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.11.6",
-    "@babel/preset-react": "^7.10.4",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-react": "^7.12.10",
     "parcel": "^1.12.4"
   },
   "scripts": {
