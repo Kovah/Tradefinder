@@ -15,8 +15,8 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/preset-react": "^7.12.10",
+    "@babel/core": "^7.12.17",
+    "@babel/preset-react": "^7.12.13",
     "parcel": "^1.12.4"
   },
   "scripts": {
