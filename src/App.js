@@ -4,7 +4,7 @@ import { Footer } from './layout/Footer';
 import { Header } from './layout/Header';
 import { Main } from './layout/Main';
 
-export const appVersion = 1602446860;
+export const appVersion = 1651646797;
 
 export function App () {
   return (
