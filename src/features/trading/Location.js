@@ -12,7 +12,7 @@ export function Location (props) {
   const [modalVisible, setModalVisible] = React.useState(false);
   const [modalContent, setModalContent] = React.useState('');
 
-  const locationClass = 'border-l border-r border-b border-gray-700 p-1 rounded-sm'
+  const locationClass = 'border-l border-r border-b border-gray-850 p-1 rounded-sm'
     + (props.isFirst ? ' rounded-t-sm border-t' : '')
     + (props.isLast ? ' rounded-b-sm' : '');
 

@@ -13,8 +13,8 @@ export function LocationOverview () {
   const [modalVisible, setModalVisible] = React.useState(false);
 
   const listLocations = locations.map((location) =>
-    <div className="border border-gray-700 p-4 text-center text-2xl rounded-sm
-                    cursor-pointer hover:shadow-md transition-shadow duration-200"
+    <div className="border border-gray-850 p-4 text-center text-2xl rounded-sm
+                    cursor-pointer hover:shadow-md transition-shadow"
       key={location.ident} data-ident={location.ident} onClick={toggleEditForm}>
       {location.name}
     </div>

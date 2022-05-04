@@ -8,7 +8,7 @@ export const appVersion = 1651646797;
 
 export function App () {
   return (
-    <div className="container mx-auto max-w-6xl p-4 md:p-8">
+    <div className="container mx-auto max-w-8xl p-4 md:p-8">
       <Header/>
       <Main/>
       <Footer/>

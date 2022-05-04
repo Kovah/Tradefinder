@@ -37,36 +37,26 @@ export function Main () {
     dispatch(changeSavedTab(toTab));
   }
 
+  function tabClass (isActive) {
+    return 'py-3 px-2 sm:px-4 cursor-pointer border-r border-gray-900 hover:bg-gray-800 ' + (isActive ? 'bg-gray-800' : 'bg-gray-850');
+  }
+
   return (
     <div className="my-8">
       <div className="flex trading-wider sm:tracking-widest text-xs">
-        <div className={
-          'py-3 px-2 sm:px-4 rounded-tl-sm cursor-pointer border-r border-gray-900 ' + (activeTab === T_ABOUT ? 'bg-gray-800' : 'bg-gray-850')
-        }
-          onClick={() => changeTab(T_ABOUT)}>
+        <div className={tabClass(activeTab === T_ABOUT)} onClick={() => changeTab(T_ABOUT)}>
           About
         </div>
-        <div className={
-          'py-3 px-2 sm:px-4 cursor-pointer border-r border-gray-900 ' + (activeTab === T_TRADING ? 'bg-gray-800' : 'bg-gray-850')
-        } onClick={() => changeTab(T_TRADING)}>
+        <div className={tabClass(activeTab === T_TRADING)} onClick={() => changeTab(T_TRADING)}>
           Trading
         </div>
-        <div className={
-          'py-3 px-2 sm:px-4 cursor-pointer border-r border-gray-900 ' + (activeTab === T_LOCATIONS ? 'bg-gray-800' : 'bg-gray-850')
-        }
-          onClick={() => changeTab(T_LOCATIONS)}>
+        <div className={tabClass(activeTab === T_LOCATIONS)} onClick={() => changeTab(T_LOCATIONS)}>
           Locations
         </div>
-        <div className={
-          'py-3 px-2 sm:px-4 cursor-pointer border-r border-gray-900 ' + (activeTab === T_ITEMS ? 'bg-gray-800' : 'bg-gray-850')
-        }
-          onClick={() => changeTab(T_ITEMS)}>
+        <div className={tabClass(activeTab === T_ITEMS)} onClick={() => changeTab(T_ITEMS)}>
           Items
         </div>
-        <div className={
-          'py-3 px-2 sm:px-4 rounded-tr-sm cursor-pointer ' + (activeTab === T_OPTIONS ? 'bg-gray-800' : 'bg-gray-850')
-        }
-          onClick={() => changeTab(T_OPTIONS)}>
+        <div className={tabClass(activeTab === T_OPTIONS)} onClick={() => changeTab(T_OPTIONS)}>
           Options
         </div>
       </div>

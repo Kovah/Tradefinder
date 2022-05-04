@@ -60,7 +60,7 @@ export function Trades () {
   });
 
   const allTrades = possibleTrades.map(trade =>
-    <div className="border border-gray-700 p-2 rounded-sm" key={trade.from+trade.item+trade.to}>
+    <div className="border border-gray-850 p-2 rounded-sm" key={trade.from+trade.item+trade.to}>
       <div className="flex items-center justify-between">
         <div className="flex-1 text-red-500">{trade.from}</div>
         <div className="px-3 text-sm text-gray-500">&gt;</div>

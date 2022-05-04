@@ -13,7 +13,7 @@ export function ItemOverview () {
   const [modalVisible, setModalVisible] = React.useState(false);
 
   const listItems = items.map((item) =>
-    <div className="border border-gray-700 p-4 text-center text-2xl rounded-sm
+    <div className="border border-gray-850 p-4 text-center text-2xl rounded-sm
                     cursor-pointer hover:shadow-md transition-shadow duration-200"
       key={item.ident} data-ident={item.ident} onClick={toggleEditForm}>
       {item.name}

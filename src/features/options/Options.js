@@ -48,7 +48,7 @@ export function Options () {
 
       </div>
 
-      <div className="mt-16 p-4 border border-red-700 rounded-sm">
+      <div className="mt-16 p-4 border border-red-500 border-opacity-50 rounded-sm">
         <h2 className="text-xl font-bold text-red-500">Danger Zone</h2>
 
         <div className="mt-8">
