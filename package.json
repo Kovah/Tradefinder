@@ -21,7 +21,8 @@
     "@babel/preset-react": "^7.14.5",
     "@parcel/packager-raw-url": "^2.5.0",
     "@parcel/transformer-webmanifest": "^2.5.0",
-    "parcel": "^2.5.0"
+    "parcel": "^2.5.0",
+    "process": "^0.11.10"
   },
   "scripts": {
     "serve": "parcel index.html",
