@@ -1,10 +1,5 @@
-import { useSelector } from 'react-redux';
-import { getOptions } from '../features/options/OptionsSlice';
-
-export function formatNumber (number) {
-  const options = useSelector(getOptions);
-
-  const formatted = new Intl.NumberFormat([options.numberFormat, 'en-US'], {
+export function formatNumber (number, numberFormat) {
+  const formatted = new Intl.NumberFormat([numberFormat, 'en-US'], {
     maximumSignificantDigits: 2
   }).format(number);
 

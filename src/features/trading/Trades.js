@@ -3,10 +3,12 @@ import { useSelector } from 'react-redux';
 import { getLocations } from '../locations/LocationsSlice';
 import { getItems } from '../items/ItemsSlice';
 import { formatNumber } from '../../app/helper';
+import { getOptions } from '../options/OptionsSlice';
 
 export function Trades () {
   const allItems = useSelector(getItems);
   const locations = useSelector(getLocations);
+  const options = useSelector(getOptions);
 
   let possibleTrades = [];
 
@@ -67,12 +69,12 @@ export function Trades () {
         <div className="flex-1 text-right text-green-500">{trade.to}</div>
       </div>
       <div className="flex items-center justify-between my-2">
-        <div className="flex-1 text-sm text-gray-500">Buy {formatNumber(trade.amount)} @ <span className="text-red-500">{formatNumber(trade.buyFor)}</span></div>
+        <div className="flex-1 text-sm text-gray-500">Buy {formatNumber(trade.amount, options.numberFormat)} @ <span className="text-red-500">{formatNumber(trade.buyFor, options.numberFormat)}</span></div>
         <div className="flex-1 px-2 text-sm text-center">{trade.item}</div>
-        <div className="flex-1 pl-2 text-sm text-right text-gray-500">Sell @ <span className="text-green-500">{formatNumber(trade.sellFor)}</span></div>
+        <div className="flex-1 pl-2 text-sm text-right text-gray-500">Sell @ <span className="text-green-500">{formatNumber(trade.sellFor, options.numberFormat)}</span></div>
       </div>
       <div className="text-right text-sm">
-        Profit: {formatNumber(trade.profitTotal)}
+        Profit: {formatNumber(trade.profitTotal, options.numberFormat)}
       </div>
     </div>
   );
