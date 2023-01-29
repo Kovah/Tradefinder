@@ -37,7 +37,7 @@ export function EditLocationForm (props) {
           Update Location
         </button>
         <button type="button" onClick={doDeleteLocation}
-          className="ml-auto py-2 px-3 text-sm border border-red-700 hover:border-red-800 hover:bg-gray-850 rounded-sm">
+          className="ml-auto py-2 px-3 text-sm border border-red-400 hover:border-red-600 hover:bg-gray-850 rounded-sm">
           Delete Location
         </button>
       </div>

@@ -2,7 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-.title svg {
+.title svg,
+svg.icon {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   display: inline-block;
@@ -17,12 +18,17 @@
   vertical-align: -0.125em;
 }
 
-.title svg path {
+.title svg path,
+svg.icon path {
   fill: currentColor;
 }
 
 .location-item:last-of-type {
   border-bottom: 0;
+}
+
+.location-item:hover .location-item-remove {
+  display: inline-block;
 }
 
 .cursor-zoom-out {

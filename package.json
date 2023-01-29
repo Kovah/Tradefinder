@@ -25,7 +25,7 @@
     "process": "^0.11.10"
   },
   "scripts": {
-    "serve": "parcel index.html",
+    "serve": "parcel index.html --no-cache",
     "build": "parcel build index.html"
   },
   "browserslist": [

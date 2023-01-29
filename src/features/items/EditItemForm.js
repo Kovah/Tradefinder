@@ -39,7 +39,7 @@ export function EditItemForm (props) {
           Change Item
         </button>
         <button type="button" onClick={doDeleteItem}
-          className="ml-auto py-2 px-3 text-sm border border-red-700 hover:border-red-800 hover:bg-gray-850 rounded-sm">
+          className="ml-auto py-2 px-3 text-sm border border-red-400 hover:border-red-600 hover:bg-gray-850 rounded-sm">
           Delete Item
         </button>
       </div>

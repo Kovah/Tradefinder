@@ -7,7 +7,7 @@ export function Item (props) {
   const dispatch = useDispatch();
   const dataChanged = useRef(false);
 
-  const inputClass = 'p-1 rounded-sm bg-gray-800 border border-gray-850 text-xxs text-right';
+  const inputClass = 'p-1 rounded-sm bg-gray-800 border border-gray-850 text-xs text-right';
 
   const allItems = useSelector(getItems);
   const itemDetails = allItems.find(item => {
@@ -67,14 +67,16 @@ export function Item (props) {
 
       <h4 className="break-words">
         {itemDetails.name}
-        <button className="text-sm text-gray-500 hover:text-red-500 focus:text-red-500 py-0 px-2"
-          onClick={doRemoveItem} title="Remove this Item">&times;</button>
+        <button className="location-item-remove hidden text-xs text-gray-500 hover:text-red-400 focus:text-red-400 py-0 px-2"
+          onClick={doRemoveItem} title="Remove this Item">
+          <svg className="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/></svg>
+        </button>
       </h4>
 
       <div>
         <div className="grid grid-cols-3 gap-1 mb-1 text-center text-gray-600">
           <div className="text-xxs pt-1">Amount</div>
-          <div className="uppercase text-green-500 opacity-75">Buys</div>
+          <div className="uppercase text-green-400 opacity-75">Buys</div>
           <div className="text-xxs pt-1">Value</div>
         </div>
         <div className="grid grid-cols-2 gap-1">
@@ -86,7 +88,7 @@ export function Item (props) {
       <div>
         <div className="grid grid-cols-3 gap-1 mb-1 text-center text-gray-600">
           <div className="text-xxs pt-1">Value</div>
-          <div className="uppercase text-red-500 opacity-75">Sells</div>
+          <div className="uppercase text-red-400 opacity-75">Sells</div>
           <div className="text-xxs pt-1">Amount</div>
         </div>
         <div className="grid grid-cols-2 gap-1">
