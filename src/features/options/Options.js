@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeNumberFormat, getOptions } from './OptionsSlice';
+import { changeNumberFormatLocale, changeNumberFormatDecimals, getOptions } from './OptionsSlice';
 import { deleteAllLocations } from '../locations/LocationsSlice';
 import { deleteAllItems } from '../items/ItemsSlice';
 
@@ -9,8 +9,12 @@ export function Options () {
 
   const options = useSelector(getOptions);
 
-  function doChangeNumberFormat (event) {
-    dispatch(changeNumberFormat(event.target.value));
+  function doChangeNumberFormatLocale (event) {
+    dispatch(changeNumberFormatLocale(event.target.value));
+  }
+
+  function doChangeNumberFormatDecimals (event) {
+    dispatch(changeNumberFormatDecimals(event.target.value));
   }
 
   function doCleanStart () {
@@ -38,12 +42,21 @@ export function Options () {
         <div>
           <label htmlFor="option-number-format" className="block text-xl">Number Format</label>
           <small>Change how numbers appear in the application.</small>
-          <select name="option-number-format" id="option-number-format"
-            value={options.numberFormat} onChange={doChangeNumberFormat}
+          <select name="option-number-format-locale" id="option-number-format-locale"
+            value={options.numberFormat.locale} onChange={doChangeNumberFormatLocale}
             className="w-full py-2 px-3 rounded-sm mt-4 bg-gray-700 shadow-sm">
             <option value="en-US">US (10,000.00)</option>
             <option value="de-DE">EU (10.000,00)</option>
+            <option value="fr">French (10 000,00)</option>
           </select>
+        </div>
+
+        <div>
+          <label htmlFor="option-number-format" className="block text-xl">Decimals</label>
+          <small>Choose the amount of decimals displayed for numbers.</small>
+          <input type="number" min="0" max="10" name="option-number-format-decimals" id="option-number-format-decimals"
+            className="w-full py-2 px-3 text-sm rounded-sm mt-4 bg-gray-700 shadow-sm"
+            value={options.numberFormat.decimals} onChange={doChangeNumberFormatDecimals}/>
         </div>
 
       </div>

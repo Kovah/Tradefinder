@@ -4,19 +4,25 @@ export const optionsSlice = createSlice({
   name: 'options',
   initialState: {
     savedTab: 'ABOUT',
-    numberFormat: 'en-US'
+    numberFormat: {
+      locale: 'en-US',
+      decimals: 2,
+    }
   },
   reducers: {
     changeSavedTab: (state, action) => {
       state.savedTab = action.payload;
     },
-    changeNumberFormat: (state, action) => {
-      state.numberFormat = action.payload;
+    changeNumberFormatLocale: (state, action) => {
+      state.numberFormat.locale = action.payload;
+    },
+    changeNumberFormatDecimals: (state, action) => {
+      state.numberFormat.decimals = action.payload;
     }
   }
 });
 
-export const {changeSavedTab, changeNumberFormat} = optionsSlice.actions;
+export const {changeSavedTab, changeNumberFormatLocale, changeNumberFormatDecimals} = optionsSlice.actions;
 
 export const getOptions = state => state.options;
 export const getSavedTab = state => state.options.savedTab;
