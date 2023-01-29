@@ -45,6 +45,9 @@ export function Trades () {
         }
 
         const itemAmount = Math.min(item.sellAmount, possibleItem.buyAmount);
+        const profit = possibleItem.buyValue - item.sellValue;
+        const profitTotal = profit * itemAmount;
+        const profitPercentage = profit / item.sellValue * 100;
         possibleTrades.push({
           from: location.name,
           to: newLocation.name,
@@ -52,9 +55,22 @@ export function Trades () {
           amount: itemAmount,
           buyFor: item.sellValue,
           sellFor: possibleItem.buyValue,
-          profit: possibleItem.buyValue - item.sellValue,
-          profitTotal: (possibleItem.buyValue - item.sellValue) * itemAmount
+          profit: profit,
+          profitTotal: profitTotal,
+          profitPercentage: profitPercentage,
         });
+
+        if (options.minimumProfit.amount > 0) {
+          possibleTrades = possibleTrades.filter((trade) => {
+            if (options.minimumProfit.type === 'percent') {
+              return trade.profitPercentage >= options.minimumProfit.amount;
+            } else if (options.minimumProfit.type === 'valueTotal') {
+              return trade.profitTotal >= options.minimumProfit.amount;
+            } else {
+              return trade.profit >= options.minimumProfit.amount;
+            }
+          });
+        }
 
         possibleTrades.sort((a,b) => a.profitTotal < b.profitTotal ? 1 : 0);
       });
@@ -75,8 +91,12 @@ export function Trades () {
         <div className="flex-1 px-2 text-sm text-center">{trade.item}</div>
         <div className="flex-1 pl-2 text-sm text-right text-gray-500">Sell @ <span className="text-green-400">{formatNumber(trade.sellFor, options.numberFormat)}</span></div>
       </div>
-      <div className="text-right text-sm">
-        Profit: {formatNumber(trade.profitTotal, options.numberFormat)}
+      <div className="text-right text-sm text-gray-500">
+        <span className="mr-2">Profit: {formatNumber(trade.profitTotal, options.numberFormat)}</span>
+        <small className="text-gray-500">
+          <svg className="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M384 160c-17.7 0-32-14.3-32-32s14.3-32 32-32H544c17.7 0 32 14.3 32 32V288c0 17.7-14.3 32-32 32s-32-14.3-32-32V205.3L342.6 374.6c-12.5 12.5-32.8 12.5-45.3 0L192 269.3 54.6 406.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l160-160c12.5-12.5 32.8-12.5 45.3 0L320 306.7 466.7 160H384z"/></svg>
+          &nbsp;{formatNumber(trade.profitPercentage, options.numberFormat)}%
+        </small>
       </div>
     </div>
   );

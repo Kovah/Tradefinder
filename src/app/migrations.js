@@ -26,5 +26,9 @@ function apply1674997450 (data) {
     locale: data.options.numberFormat,
     decimals: 2,
   };
+  data.options.minimumProfit = {
+    type: 'percent',
+    amount: 0,
+  };
   return data;
 }

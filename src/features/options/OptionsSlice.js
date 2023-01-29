@@ -18,11 +18,17 @@ export const optionsSlice = createSlice({
     },
     changeNumberFormatDecimals: (state, action) => {
       state.numberFormat.decimals = action.payload;
+    },
+    changeMinimumProfitType: (state, action) => {
+      state.minimumProfit.type = action.payload;
+    },
+    changeMinimumProfitAmount: (state, action) => {
+      state.minimumProfit.amount = action.payload;
     }
   }
 });
 
-export const {changeSavedTab, changeNumberFormatLocale, changeNumberFormatDecimals} = optionsSlice.actions;
+export const {changeSavedTab, changeNumberFormatLocale, changeNumberFormatDecimals, changeMinimumProfitType, changeMinimumProfitAmount} = optionsSlice.actions;
 
 export const getOptions = state => state.options;
 export const getSavedTab = state => state.options.savedTab;

@@ -1,6 +1,12 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeNumberFormatLocale, changeNumberFormatDecimals, getOptions } from './OptionsSlice';
+import {
+  changeMinimumProfitAmount,
+  changeMinimumProfitType,
+  changeNumberFormatDecimals,
+  changeNumberFormatLocale,
+  getOptions
+} from './OptionsSlice';
 import { deleteAllLocations } from '../locations/LocationsSlice';
 import { deleteAllItems } from '../items/ItemsSlice';
 
@@ -15,6 +21,14 @@ export function Options () {
 
   function doChangeNumberFormatDecimals (event) {
     dispatch(changeNumberFormatDecimals(event.target.value));
+  }
+
+  function doChangeMinimumProfitType (event) {
+    dispatch(changeMinimumProfitType(event.target.value));
+  }
+
+  function doChangeMinimumProfitAmount (event) {
+    dispatch(changeMinimumProfitAmount(event.target.value));
   }
 
   function doCleanStart () {
@@ -37,7 +51,7 @@ export function Options () {
     <div className="relative">
       <h2 className="text-2xl font-bold">Options</h2>
 
-      <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-8">
 
         <div>
           <label htmlFor="option-number-format" className="block text-xl">Number Format</label>
@@ -57,6 +71,29 @@ export function Options () {
           <input type="number" min="0" max="10" name="option-number-format-decimals" id="option-number-format-decimals"
             className="w-full py-2 px-3 text-sm rounded-sm mt-4 bg-gray-700 shadow-sm"
             value={options.numberFormat.decimals} onChange={doChangeNumberFormatDecimals}/>
+        </div>
+
+        <div>
+          <label htmlFor="option-number-format" className="block text-xl">Minimum Profit</label>
+          <small>Set a minimum amount or percentage a trade must generate.</small>
+          <br/>
+          <small>Example: if you want to double your investment, set the percentage to 200%.</small>
+          <br/>
+          <small>Example 2: if you want to earn at least $20 per sold item, set the profit per item to 20.</small>
+          <br/>
+          <small>Example 3: if you want to earn at least $100 per trade, set the total profit amount to 100.</small>
+          <div className="flex items-center">
+            <input type="number" min="0" step="0.01" name="option-minimum-profit-amount" id="option-minimum-profit-amount"
+              className="w-full py-2 px-3 mr-1 text-sm rounded-sm mt-4 bg-gray-700 shadow-sm"
+              value={options.minimumProfit.amount} onChange={doChangeMinimumProfitAmount}/>
+            <select name="option-minimum-profit-type" id="option-minimum-profit-type"
+              value={options.minimumProfit.type} onChange={doChangeMinimumProfitType}
+              className="w-full py-2 px-3 rounded-sm mt-4 bg-gray-700 shadow-sm">
+              <option value="percent">Profit in Percent</option>
+              <option value="value">Profit per item</option>
+              <option value="valueTotal">total Profit</option>
+            </select>
+          </div>
         </div>
 
       </div>
