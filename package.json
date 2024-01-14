@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.1",
-    "@swc/helpers": "^0.3.13",
+    "@swc/helpers": "^0.5.3",
     "autoprefixer": "^10.4.7",
     "postcss": "^8.4.13",
     "react": "^16.14.0",
