@@ -58,7 +58,7 @@ export function Options () {
           <small>Change how numbers appear in the application.</small>
           <select name="option-number-format-locale" id="option-number-format-locale"
             value={options.numberFormat.locale} onChange={doChangeNumberFormatLocale}
-            className="w-full py-2 px-3 rounded-sm mt-4 bg-gray-700 shadow-sm">
+            className="input">
             <option value="en-US">US (10,000.00)</option>
             <option value="de-DE">EU (10.000,00)</option>
             <option value="fr">French (10 000,00)</option>
@@ -69,7 +69,7 @@ export function Options () {
           <label htmlFor="option-number-format" className="block text-xl">Decimals</label>
           <small>Choose the amount of decimals displayed for numbers.</small>
           <input type="number" min="0" max="10" name="option-number-format-decimals" id="option-number-format-decimals"
-            className="w-full py-2 px-3 text-sm rounded-sm mt-4 bg-gray-700 shadow-sm"
+            className="input"
             value={options.numberFormat.decimals} onChange={doChangeNumberFormatDecimals}/>
         </div>
 
@@ -83,12 +83,12 @@ export function Options () {
           <br/>
           <small>Example 3: if you want to earn at least $100 per trade, set the total profit amount to 100.</small>
           <div className="flex items-center">
-            <input type="number" min="0" step="0.01" name="option-minimum-profit-amount" id="option-minimum-profit-amount"
-              className="w-full py-2 px-3 mr-1 text-sm rounded-sm mt-4 bg-gray-700 shadow-sm"
+            <input type="number" min="0" step="0.01" name="option-minimum-profit-amount"
+              id="option-minimum-profit-amount" className="input"
               value={options.minimumProfit.amount} onChange={doChangeMinimumProfitAmount}/>
             <select name="option-minimum-profit-type" id="option-minimum-profit-type"
               value={options.minimumProfit.type} onChange={doChangeMinimumProfitType}
-              className="w-full py-2 px-3 rounded-sm mt-4 bg-gray-700 shadow-sm">
+              className="input border-l-0">
               <option value="percent">Profit in Percent</option>
               <option value="value">Profit per item</option>
               <option value="valueTotal">total Profit</option>

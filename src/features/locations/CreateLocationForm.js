@@ -27,9 +27,8 @@ export function CreateLocationForm (props) {
 
       <label htmlFor="item-name">Location Name</label>
       <input type="text" id="item-name" value={name} minLength="1" autoFocus required
-        onChange={e => setName(e.target.value)} className="w-full py-2 px-3 rounded-sm my-4 bg-gray-700 shadow-sm"/>
-      <button type="submit"
-        className="py-2 px-3 bg-orange-600 hover:bg-orange-700 rounded-sm">
+        onChange={e => setName(e.target.value)} className="my-4 input"/>
+      <button type="submit" className="btn btn-primary">
         Add Location
       </button>
     </form>

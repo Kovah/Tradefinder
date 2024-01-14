@@ -31,10 +31,10 @@ export function SelectItemForm (props) {
 
       <label htmlFor="item-ident">Item</label>
       <select name="item-ident" id="item-ident" required ref={itemSelect}
-        className="w-full py-2 px-3 rounded-sm my-4 bg-gray-700 shadow-sm">
+        className="input">
         {itemOptions}
       </select>
-      <button type="submit" className="py-2 px-3 bg-orange-600 hover:bg-orange-700 rounded-sm">
+      <button type="submit" className="btn btn-primary">
         Select Item
       </button>
     </form>

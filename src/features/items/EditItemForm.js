@@ -32,16 +32,16 @@ export function EditItemForm (props) {
 
       <label htmlFor="item-name" className="block mb-2">Item Name</label>
       <input type="text" id="item-name" value={name} minLength="1" autoFocus required
-        onChange={e => setName(e.target.value)} className="w-full py-2 px-3 mb-4 rounded-sm bg-gray-700 shadow-sm"/>
+        onChange={e => setName(e.target.value)} className="my-4 input"/>
 
       <div className="flex items-center">
-        <button type="submit" className="py-2 px-3 bg-orange-600 hover:bg-orange-700 rounded-sm">
-          Change Item
-        </button>
-        <button type="button" onClick={doDeleteItem}
-          className="ml-auto py-2 px-3 text-sm border border-red-400 hover:border-red-600 hover:bg-gray-850 rounded-sm">
+        <button type="button" onClick={doDeleteItem} className="btn btn-danger">
           Delete Item
         </button>
+        <button type="submit" className="ml-auto btn btn-primary">
+          Change Item
+        </button>
+
       </div>
     </form>
   );

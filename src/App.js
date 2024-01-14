@@ -3,6 +3,7 @@ import React from 'react';
 import { Footer } from './layout/Footer';
 import { Header } from './layout/Header';
 import { Main } from './layout/Main';
+import './app.css';
 
 export const appVersion = 1674997450;
 

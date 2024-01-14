@@ -71,14 +71,10 @@ export function Location (props) {
         <h4 className="text-lg font-bold">
           {props.location.name}
         </h4>
-        <button
-          className="py-1 px-2 ml-auto text-xxs border border-gray-700 hover:border-orange-700 hover:bg-orange-700 hover:text-white rounded-sm"
-          onClick={selectNewItem}>
+        <button className="ml-auto btn btn-xs" onClick={selectNewItem}>
           Add Item
         </button>
-        <button
-          className="py-1 px-2 ml-1 text-xxs border border-gray-700 hover:border-red-800 hover:bg-red-800 hover:text-white rounded-sm"
-          onClick={removeLocation} title="Remove this Location">
+        <button className="ml-1 btn btn-xs" onClick={removeLocation} title="Remove this Location">
           <svg className="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/></svg>
         </button>
       </div>

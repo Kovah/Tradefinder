@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .input {
+    @apply inline-block w-full py-2 px-3 rounded-sm bg-gray-700 border border-gray-900 shadow-sm;
+  }
+  .input.input-sm {
+    @apply py-1 px-2 text-sm;
+  }
+  .input.input-xs {
+    @apply py-0.5 px-1 text-xs;
+  }
+
+  .btn {
+    @apply py-2 px-3 text-sm rounded-sm transition
+      border border-gray-900 hover:border-orange-700 hover:bg-orange-700 hover:text-white ;
+  }
+  .btn.btn-sm {
+    @apply py-1 px-2 text-sm;
+  }
+  .btn.btn-xs {
+    @apply py-0.5 px-2 text-xxs;
+  }
+  .btn.btn-primary {
+    @apply border-orange-600 hover:border-orange-700 bg-orange-600 hover:bg-orange-700;
+  }
+  .btn.btn-danger {
+    @apply border-red-600 hover:border-red-700 bg-red-600 hover:bg-red-700;
+  }
+}

@@ -31,10 +31,10 @@ export function SelectLocationForm (props) {
 
       <label htmlFor="location-ident">Location</label>
       <select name="location-ident" id="location-ident" required ref={locationSelect}
-        className="w-full py-2 px-3 rounded-sm my-4 bg-gray-700 shadow-sm">
+        className="input">
         {locationOptions}
       </select>
-      <button type="submit" className="py-2 px-3 bg-orange-600 hover:bg-orange-700 rounded-sm">
+      <button type="submit" className="btn btn-primary">
         Select Location
       </button>
     </form>

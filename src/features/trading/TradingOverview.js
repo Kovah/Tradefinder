@@ -59,7 +59,7 @@ export function TradingOverview () {
     <div>
       <div className="flex items-center">
         <h2 className="mr-4 text-2xl font-bold">Trading</h2>
-        <button className="py-2 px-3 ml-auto text-sm bg-orange-600 hover:bg-orange-700 rounded-sm"
+        <button className="ml-auto btn btn-primary"
           onClick={selectNewLocation}>
           Add Location
         </button>

@@ -41,8 +41,7 @@ export function LocationOverview () {
     <div className="relative">
       <div className="flex items-center">
         <h2 className="mr-4 text-2xl font-bold">Locations</h2>
-        <button className="py-2 px-3 ml-auto text-sm bg-orange-600 hover:bg-orange-700 rounded-sm"
-          onClick={toggleCreateForm}>
+        <button className="ml-auto btn btn-primary" onClick={toggleCreateForm}>
           Add Location
         </button>
       </div>

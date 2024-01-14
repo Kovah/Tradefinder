@@ -7,7 +7,7 @@ export function Item (props) {
   const dispatch = useDispatch();
   const dataChanged = useRef(false);
 
-  const inputClass = 'p-1 rounded-sm bg-gray-800 border border-gray-850 text-xs text-right';
+  const inputClass = 'input input-xs';
 
   const allItems = useSelector(getItems);
   const itemDetails = allItems.find(item => {
