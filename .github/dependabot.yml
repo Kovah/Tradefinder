@@ -5,13 +5,10 @@ updates:
     schedule:
       interval: "weekly"
     groups:
-      prod-dependencies:
-        dependency-type: "production"
+      major:
         update-types:
-          - "minor"
-          - "patch"
-      dev-dependencies:
-        dependency-type: "development"
+          - "major"
+      minor:
         update-types:
           - "minor"
           - "patch"
