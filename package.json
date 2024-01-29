@@ -6,8 +6,8 @@
     "url": "git+https://github.com/Kovah/Tradefinder.git"
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^2.0.1",
-    "autoprefixer": "^10.4.7",
+    "@reduxjs/toolkit": "^2.1.0",
+    "autoprefixer": "^10.4.17",
     "postcss": "^8.4.13",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -16,7 +16,7 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.15.5",
+    "@babel/core": "^7.23.9",
     "@babel/preset-react": "^7.14.5",
     "@parcel/packager-raw-url": "^2.5.0",
     "@parcel/transformer-webmanifest": "^2.5.0",
