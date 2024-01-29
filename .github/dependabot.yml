@@ -5,10 +5,43 @@ updates:
     schedule:
       interval: "weekly"
     groups:
-      major:
+      npm-major:
         update-types:
           - "major"
-      minor:
+      npm-minor:
         update-types:
           - "minor"
           - "patch"
+
+  - package-ecosystem: "composer"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    ignore:
+      - dependency-name: "laravel/cashier-paddle"
+    groups:
+      composer-major:
+        update-types:
+          - "major"
+      composer-minor:
+        update-types:
+          - "minor"
+          - "patch"
+
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    groups:
+      docker:
+        patterns:
+          - '*'
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    groups:
+      actions:
+        patterns:
+          - '*'
