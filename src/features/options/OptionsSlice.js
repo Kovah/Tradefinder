@@ -7,6 +7,10 @@ export const optionsSlice = createSlice({
     numberFormat: {
       locale: 'en-US',
       decimals: 2,
+    },
+    minimumProfit: {
+      type: 'percent',
+      amount: 0,
     }
   },
   reducers: {
