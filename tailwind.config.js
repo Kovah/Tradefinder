@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors');
+
 module.exports = {
   content: [
     './index.html',
@@ -6,6 +8,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        primary: colors.orange,
         gray: {
           '50': '#fff',
           '100': '#f8f9fa',
@@ -20,6 +23,9 @@ module.exports = {
           '900': '#212529',
           '950': '#121417',
         }
+      },
+      fontFamily: {
+        'sans': ['IBM Plex Sans', 'sans-serif'],
       },
       fontSize: {
         'xxs': '.65rem'

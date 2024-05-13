@@ -60,7 +60,7 @@ export function Trades () {
           profitPercentage: profitPercentage,
         });
 
-        if (options.minimumProfit.amount > 0) {
+        if (options.minimumProfit?.amount > 0) {
           possibleTrades = possibleTrades.filter((trade) => {
             if (options.minimumProfit.type === 'percent') {
               return trade.profitPercentage >= options.minimumProfit.amount;
