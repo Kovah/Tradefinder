@@ -32,7 +32,7 @@ export function ImportDataForm () {
         onChange={e => setImportData(e.target.value)}
         className="w-full py-2 px-3 text-xs rounded-sm my-4 bg-gray-700 shadow-sm"/>
       <button type="submit"
-        className="py-2 px-3 bg-orange-600 hover:bg-orange-700 rounded-sm">
+        className="py-2 px-3 bg-primary-600 hover:bg-primary-700 rounded-sm">
         Start Import
       </button>
     </form>

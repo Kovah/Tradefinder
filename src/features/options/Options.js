@@ -58,7 +58,7 @@ export function Options () {
           <small>Change how numbers appear in the application.</small>
           <select name="option-number-format-locale" id="option-number-format-locale"
             value={options.numberFormat.locale} onChange={doChangeNumberFormatLocale}
-            className="input">
+            className="input mt-2">
             <option value="en-US">US (10,000.00)</option>
             <option value="de-DE">EU (10.000,00)</option>
             <option value="fr">French (10 000,00)</option>
@@ -69,7 +69,7 @@ export function Options () {
           <label htmlFor="option-number-format" className="block text-xl">Decimals</label>
           <small>Choose the amount of decimals displayed for numbers.</small>
           <input type="number" min="0" max="10" name="option-number-format-decimals" id="option-number-format-decimals"
-            className="input"
+            className="input mt-2"
             value={options.numberFormat.decimals} onChange={doChangeNumberFormatDecimals}/>
         </div>
 
@@ -82,7 +82,7 @@ export function Options () {
           <small>Example 2: if you want to earn at least $20 per sold item, set the profit per item to 20.</small>
           <br/>
           <small>Example 3: if you want to earn at least $100 per trade, set the total profit amount to 100.</small>
-          <div className="flex items-center">
+          <div className="flex items-center mt-2">
             <input type="number" min="0" step="0.01" name="option-minimum-profit-amount"
               id="option-minimum-profit-amount" className="input"
               value={options.minimumProfit.amount} onChange={doChangeMinimumProfitAmount}/>
