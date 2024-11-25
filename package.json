@@ -8,19 +8,19 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.3.0",
     "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.47",
+    "postcss": "^8.4.49",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-redux": "^9.1.2",
-    "tailwindcss": "^3.4.14",
-    "uuid": "^11.0.2"
+    "tailwindcss": "^3.4.15",
+    "uuid": "^11.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
     "@babel/preset-react": "^7.25.9",
-    "@parcel/packager-raw-url": "^2.12.0",
-    "@parcel/transformer-webmanifest": "^2.12.0",
-    "parcel": "^2.12.0",
+    "@parcel/packager-raw-url": "^2.13.2",
+    "@parcel/transformer-webmanifest": "^2.13.2",
+    "parcel": "^2.13.2",
     "process": "^0.11.10"
   },
   "scripts": {
