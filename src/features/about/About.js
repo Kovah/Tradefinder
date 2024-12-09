@@ -10,7 +10,7 @@ export function About () {
         <h3 className="mt-6 mb-2 text-xl font-bold">How to use the Tradefinder</h3>
         <p className="mb-3">Opening the tool for the first time will add some example locations and some items to it, so you start experimenting right away.</p>
         <p className="mb-3">After adding a location to the trading overview, you can add items to that location. Once added, you can start editing the amounts or prices. If an item is not sold or bought, simply leave the amount and value at zero.</p>
-        <p>Once you added at least two locations with the same item, the Tradefinder will calculate the possible trades. If a profitable trade (profit > 0) is found, it will be displayed in the trades overview on the right side.</p>
+        <p>Once you added at least two locations with the same item, the Tradefinder will calculate the possible trades. If a profitable trade (profit &gt; 0) is found, it will be displayed in the trades overview on the right side.</p>
       </div>
     </div>
   )
