@@ -6,12 +6,12 @@
     "url": "git+https://github.com/Kovah/Tradefinder.git"
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^2.4.0",
+    "@reduxjs/toolkit": "^2.5.0",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.49",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-redux": "^9.1.2",
+    "react-redux": "^9.2.0",
     "tailwindcss": "^3.4.16",
     "uuid": "^11.0.3"
   },
