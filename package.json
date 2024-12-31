@@ -21,7 +21,8 @@
     "@parcel/packager-raw-url": "^2.13.2",
     "@parcel/transformer-webmanifest": "^2.13.2",
     "parcel": "^2.13.2",
-    "process": "^0.11.10"
+    "process": "^0.11.10",
+    "svgo": "^3.3.2"
   },
   "scripts": {
     "serve": "parcel index.html --no-cache",
