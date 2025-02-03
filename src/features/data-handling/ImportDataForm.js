@@ -30,9 +30,9 @@ export function ImportDataForm () {
       <label htmlFor="import-content">Encrypted data to import</label>
       <textarea id="import-content" value={importData} minLength="1" autoFocus required
         onChange={e => setImportData(e.target.value)}
-        className="w-full py-2 px-3 text-xs rounded-sm my-4 bg-gray-700 shadow-sm"/>
+        className="w-full py-2 px-3 text-xs rounded-xs my-4 bg-gray-700 shadow-xs"/>
       <button type="submit"
-        className="py-2 px-3 bg-primary-600 hover:bg-primary-700 rounded-sm">
+        className="py-2 px-3 bg-primary-600 hover:bg-primary-700 rounded-xs">
         Start Import
       </button>
     </form>

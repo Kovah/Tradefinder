@@ -1,8 +1,89 @@
-@import url(https://fonts.bunny.net/css?family=ibm-plex-sans:400);
+@import url(https://fonts.bunny.net/css?family=ibm-plex-sans:400) layer(base);
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@config './tailwind.config.js';
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@utility input {
+  @apply inline-block w-full py-2 px-3 rounded-xs bg-gray-700 border border-gray-900 shadow-xs;
+  &.input-sm {
+    @apply py-1 px-2 text-sm;
+  }
+  &.input-xs {
+    @apply py-0.5 px-1 text-xs;
+  }
+}
+
+@utility input-sm {
+  &.input {
+    @apply py-1 px-2 text-sm;
+  }
+}
+
+@utility input-xs {
+  &.input {
+    @apply py-0.5 px-1 text-xs;
+  }
+}
+
+@utility btn {
+  @apply py-2 px-3 text-sm rounded-xs transition
+    border border-gray-900 hover:border-primary-700 hover:bg-primary-700 hover:text-white;
+  &.btn-sm {
+    @apply py-1 px-2 text-sm;
+  }
+  &.btn-xs {
+    @apply py-0.5 px-2 text-xxs;
+  }
+  &.btn-primary {
+    @apply border-primary-600 hover:border-primary-700 bg-primary-600 hover:bg-primary-700;
+  }
+  &.btn-danger {
+    @apply border-red-600 hover:border-red-700 bg-red-600 hover:bg-red-700;
+  }
+}
+
+@utility btn-sm {
+  &.btn {
+    @apply py-1 px-2 text-sm;
+  }
+}
+
+@utility btn-xs {
+  &.btn {
+    @apply py-0.5 px-2 text-xxs;
+  }
+}
+
+@utility btn-primary {
+  &.btn {
+    @apply border-primary-600 hover:border-primary-700 bg-primary-600 hover:bg-primary-700;
+  }
+}
+
+@utility btn-danger {
+  &.btn {
+    @apply border-red-600 hover:border-red-700 bg-red-600 hover:bg-red-700;
+  }
+}
 
 @layer base {
   .title svg,
@@ -36,34 +117,5 @@
 
   .cursor-zoom-out {
     cursor: zoom-out;
-  }
-}
-
-@layer components {
-  .input {
-    @apply inline-block w-full py-2 px-3 rounded-sm bg-gray-700 border border-gray-900 shadow-sm;
-  }
-  .input.input-sm {
-    @apply py-1 px-2 text-sm;
-  }
-  .input.input-xs {
-    @apply py-0.5 px-1 text-xs;
-  }
-
-  .btn {
-    @apply py-2 px-3 text-sm rounded-sm transition
-    border border-gray-900 hover:border-primary-700 hover:bg-primary-700 hover:text-white ;
-  }
-  .btn.btn-sm {
-    @apply py-1 px-2 text-sm;
-  }
-  .btn.btn-xs {
-    @apply py-0.5 px-2 text-xxs;
-  }
-  .btn.btn-primary {
-    @apply border-primary-600 hover:border-primary-700 bg-primary-600 hover:bg-primary-700;
-  }
-  .btn.btn-danger {
-    @apply border-red-600 hover:border-red-700 bg-red-600 hover:bg-red-700;
   }
 }

@@ -60,7 +60,7 @@ export function Main () {
           Options
         </div>
       </div>
-      <div className="p-4 bg-gray-800 shadow-lg rounded-sm rounded-t-none">
+      <div className="p-4 bg-gray-800 shadow-lg rounded-xs rounded-t-none">
         {tabContent}
       </div>
 

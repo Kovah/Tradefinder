@@ -98,14 +98,14 @@ export function Options () {
 
       </div>
 
-      <div className="mt-16 p-4 border border-red-400 border-opacity-50 rounded-sm">
+      <div className="mt-16 p-4 border border-red-400 border-opacity-50 rounded-xs">
         <h2 className="text-xl font-bold text-red-400">Danger Zone</h2>
 
         <div className="mt-8">
           <h3 className="text-red-400">Clean Start</h3>
           <small>Deletes all locations and items to start with a blank canvas. This operation cannot be undone!</small>
           <div className="mt-2">
-            <button className="py-2 px-3 bg-red-500 hover:bg-red-600 rounded-sm text-xs" onClick={doCleanStart}>
+            <button className="py-2 px-3 bg-red-500 hover:bg-red-600 rounded-xs text-xs" onClick={doCleanStart}>
               Start clean
             </button>
           </div>
@@ -116,7 +116,7 @@ export function Options () {
           <small>Deletes all personal data and restores the example state of the application. This operation cannot be
             undone!</small>
           <div className="mt-2">
-            <button className="py-2 px-3 bg-red-500 hover:bg-red-600 rounded-sm text-xs" onClick={doCompleteWipe}>
+            <button className="py-2 px-3 bg-red-500 hover:bg-red-600 rounded-xs text-xs" onClick={doCompleteWipe}>
               Wipe all data
             </button>
           </div>
