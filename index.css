@@ -1,36 +1,69 @@
+@import url(https://fonts.bunny.net/css?family=ibm-plex-sans:400);
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.title svg,
-svg.icon {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  display: inline-block;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  line-height: 1;
-  font-size: inherit;
-  width: 1em;
-  height: 1em;
-  overflow: visible;
-  vertical-align: -0.125em;
+@layer base {
+  .title svg,
+  svg.icon {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    font-size: inherit;
+    width: 1em;
+    height: 1em;
+    overflow: visible;
+    vertical-align: -0.125em;
+  }
+
+  .title svg path,
+  svg.icon path {
+    fill: currentColor;
+  }
+
+  .location-item:last-of-type {
+    border-bottom: 0;
+  }
+
+  .location-item:hover .location-item-remove {
+    display: inline-block;
+  }
+
+  .cursor-zoom-out {
+    cursor: zoom-out;
+  }
 }
 
-.title svg path,
-svg.icon path {
-  fill: currentColor;
-}
+@layer components {
+  .input {
+    @apply inline-block w-full py-2 px-3 rounded-sm bg-gray-700 border border-gray-900 shadow-sm;
+  }
+  .input.input-sm {
+    @apply py-1 px-2 text-sm;
+  }
+  .input.input-xs {
+    @apply py-0.5 px-1 text-xs;
+  }
 
-.location-item:last-of-type {
-  border-bottom: 0;
-}
-
-.location-item:hover .location-item-remove {
-  display: inline-block;
-}
-
-.cursor-zoom-out {
-  cursor: zoom-out;
+  .btn {
+    @apply py-2 px-3 text-sm rounded-sm transition
+    border border-gray-900 hover:border-primary-700 hover:bg-primary-700 hover:text-white ;
+  }
+  .btn.btn-sm {
+    @apply py-1 px-2 text-sm;
+  }
+  .btn.btn-xs {
+    @apply py-0.5 px-2 text-xxs;
+  }
+  .btn.btn-primary {
+    @apply border-primary-600 hover:border-primary-700 bg-primary-600 hover:bg-primary-700;
+  }
+  .btn.btn-danger {
+    @apply border-red-600 hover:border-red-700 bg-red-600 hover:bg-red-700;
+  }
 }
