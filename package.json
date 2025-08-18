@@ -12,15 +12,15 @@
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-redux": "^9.1.2",
-    "tailwindcss": "^4.1.11",
+    "tailwindcss": "^4.1.12",
     "uuid": "^11.1.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.28.0",
+    "@babel/core": "^7.28.3",
     "@babel/preset-react": "^7.27.1",
     "@parcel/packager-raw-url": "^2.15.4",
     "@parcel/transformer-webmanifest": "^2.15.4",
-    "@tailwindcss/postcss": "^4.1.11",
+    "@tailwindcss/postcss": "^4.1.12",
     "parcel": "^2.15.4",
     "process": "^0.11.10",
     "svgo": "^4.0.0"
