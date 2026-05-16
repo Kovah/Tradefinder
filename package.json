@@ -23,7 +23,7 @@
     "@tailwindcss/postcss": "^4.1.13",
     "parcel": "^2.15.4",
     "process": "^0.11.10",
-    "svgo": "^4.0.0"
+    "svgo": "^4.0.1"
   },
   "scripts": {
     "serve": "parcel index.html --no-cache",
