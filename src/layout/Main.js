@@ -13,6 +13,14 @@ export const T_LOCATIONS = 'LOCATIONS';
 export const T_ABOUT = 'ABOUT';
 export const T_OPTIONS = 'OPTIONS';
 
+const tabs = [
+  { id: T_ABOUT, label: 'About' },
+  { id: T_TRADING, label: 'Trading' },
+  { id: T_LOCATIONS, label: 'Locations' },
+  { id: T_ITEMS, label: 'Items' },
+  { id: T_OPTIONS, label: 'Options' },
+];
+
 export function Main () {
   const dispatch = useDispatch();
 
@@ -38,29 +46,27 @@ export function Main () {
   }
 
   function tabClass (isActive) {
-    return 'py-3 px-2 sm:px-4 cursor-pointer border-r border-gray-900 hover:bg-gray-800 ' + (isActive ? 'bg-gray-800' : 'bg-gray-850');
+    return 'py-3 px-2 sm:px-4 border-r border-gray-900 hover:bg-gray-800 focus:outline-hidden focus:bg-gray-800 ' + (isActive ? 'bg-gray-800 text-white' : 'bg-gray-850 text-gray-300');
   }
 
   return (
     <div className="my-8">
-      <div className="flex trading-wider sm:tracking-widest text-xs">
-        <div className={tabClass(activeTab === T_ABOUT)} onClick={() => changeTab(T_ABOUT)}>
-          About
-        </div>
-        <div className={tabClass(activeTab === T_TRADING)} onClick={() => changeTab(T_TRADING)}>
-          Trading
-        </div>
-        <div className={tabClass(activeTab === T_LOCATIONS)} onClick={() => changeTab(T_LOCATIONS)}>
-          Locations
-        </div>
-        <div className={tabClass(activeTab === T_ITEMS)} onClick={() => changeTab(T_ITEMS)}>
-          Items
-        </div>
-        <div className={tabClass(activeTab === T_OPTIONS)} onClick={() => changeTab(T_OPTIONS)}>
-          Options
-        </div>
+      <div className="flex overflow-x-auto trading-wider sm:tracking-widest text-xs" role="tablist" aria-label="Tradefinder sections">
+        {tabs.map(tab => (
+          <button
+            key={tab.id}
+            type="button"
+            id={`tab-${tab.id.toLowerCase()}`}
+            role="tab"
+            aria-selected={activeTab === tab.id}
+            aria-controls="main-panel"
+            className={tabClass(activeTab === tab.id)}
+            onClick={() => changeTab(tab.id)}>
+            {tab.label}
+          </button>
+        ))}
       </div>
-      <div className="p-4 bg-gray-800 shadow-lg rounded-xs rounded-t-none">
+      <div id="main-panel" role="tabpanel" aria-labelledby={`tab-${activeTab.toLowerCase()}`} className="p-4 bg-gray-800 shadow-lg rounded-xs rounded-t-none">
         {tabContent}
       </div>
 

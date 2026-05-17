@@ -1,3 +1,5 @@
+import { appVersion } from './version';
+
 export function applyMigrations (data) {
   const dataAppVersion = parseInt(data.appVersion);
   if (dataAppVersion < 1601821226) {
@@ -13,6 +15,7 @@ export function applyMigrations (data) {
     data = apply1674997450(data);
   }
 
+  data.appVersion = appVersion;
   return data;
 }
 

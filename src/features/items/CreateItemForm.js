@@ -20,8 +20,8 @@ export function CreateItemForm (props) {
     <form onSubmit={handleSubmit}>
       <h3 className="text-2xl mb-4">Create new Item</h3>
 
-      <label htmlFor="item-name">Item Name</label>
-      <input type="text" id="item-name" value={name} minLength="1" autoFocus required
+      <label htmlFor="create-item-name">Item Name</label>
+      <input type="text" id="create-item-name" value={name} minLength="1" autoFocus required
         onChange={e => setName(e.target.value)} className="my-4 input"/>
       <button type="submit" className="btn btn-primary">
         Add Item

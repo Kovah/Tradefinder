@@ -11,6 +11,7 @@ export function Location (props) {
 
   const [modalVisible, setModalVisible] = React.useState(false);
   const [modalContent, setModalContent] = React.useState('');
+  const [confirmRemove, setConfirmRemove] = React.useState(false);
 
   const locationClass = 'border-l border-r border-b border-gray-850 p-1 rounded-xs'
     + (props.isFirst ? ' rounded-t-sm border-t' : '')
@@ -31,7 +32,7 @@ export function Location (props) {
     setModalContent(
       <div>
         <SelectItemForm closeForm={closeModal} location={props.location}/>
-        <button className="mt-6 text-sm text-gray-400 hover:text-gray-200" onClick={addAndSelectNewItem}>
+        <button type="button" className="mt-6 text-sm text-gray-400 hover:text-gray-200" onClick={addAndSelectNewItem}>
           Add new Item
         </button>
       </div>
@@ -43,7 +44,7 @@ export function Location (props) {
     setModalContent(
       <div>
         <CreateItemForm closeForm={selectNewItem}/>
-        <button className="mt-6 text-sm text-gray-400 hover:text-gray-200" onClick={selectNewItem}>
+        <button type="button" className="mt-6 text-sm text-gray-400 hover:text-gray-200" onClick={selectNewItem}>
           Add existing Item
         </button>
       </div>
@@ -52,9 +53,7 @@ export function Location (props) {
   }
 
   function removeLocation () {
-    if (confirm('Do you really want to remove this location from the trades? All associated items will be deleted. The location will still be available in the location list.')) {
-      dispatch(deselectLocation(props.location.ident));
-    }
+    dispatch(deselectLocation(props.location.ident));
   }
 
   function closeModal () {
@@ -65,19 +64,29 @@ export function Location (props) {
   return (
     <div data-ident={props.location.ident} className={locationClass}>
       <div className="flex items-center">
-        <button title={headingsTitle} onClick={toggleItemsVisible} className="mr-1 text-xxs cursor-pointer font-mono">
+        <button type="button" title={headingsTitle} onClick={toggleItemsVisible} className="mr-1 text-xxs cursor-pointer font-mono">
           {props.location.itemsVisible ? <span>-</span> : <span>+</span>}
         </button>
         <h4 className="text-lg font-bold">
           {props.location.name}
         </h4>
-        <button className="ml-auto btn btn-xs" onClick={selectNewItem}>
+        <button type="button" className="ml-auto btn btn-xs" onClick={selectNewItem}>
           Add Item
         </button>
-        <button className="ml-1 btn btn-xs" onClick={removeLocation} title="Remove this Location">
+        <button type="button" className="ml-1 btn btn-xs" onClick={() => setConfirmRemove(true)} title="Remove this Location">
           <svg className="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/></svg>
         </button>
       </div>
+
+      {confirmRemove &&
+        <div className="my-2 border border-red-400 p-2 text-xs">
+          <p className="text-red-300">Remove this location from trading and clear its item values?</p>
+          <div className="mt-2 flex items-center justify-end gap-2">
+            <button type="button" className="btn btn-xs" onClick={() => setConfirmRemove(false)}>Cancel</button>
+            <button type="button" className="btn btn-xs btn-danger" onClick={removeLocation}>Remove</button>
+          </div>
+        </div>
+      }
 
       {props.location.items.length > 0 &&
       <div className={itemWrapperClass}>{items}</div>

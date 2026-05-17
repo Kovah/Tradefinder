@@ -12,8 +12,7 @@
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-redux": "^9.1.2",
-    "tailwindcss": "^4.1.13",
-    "uuid": "^11.1.0"
+    "tailwindcss": "^4.1.13"
   },
   "devDependencies": {
     "@babel/core": "^7.28.4",
@@ -23,11 +22,15 @@
     "@tailwindcss/postcss": "^4.1.13",
     "parcel": "^2.15.4",
     "process": "^0.11.10",
-    "svgo": "^4.0.1"
+    "svgo": "^4.0.1",
+    "vitest": "^4.1.6"
   },
   "scripts": {
     "serve": "parcel index.html --no-cache",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "audit": "npm audit"
   },
   "browserslist": [
     "> 0.5%",

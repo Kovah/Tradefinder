@@ -1,14 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { v4 as uuidv4 } from 'uuid';
+import { createSlice, nanoid } from '@reduxjs/toolkit';
 
-function addNewLocationToState (state, locationName) {
-  if (state.pool.filter(item => item.name === locationName).length > 0) {
+function addNewLocationToState (state, location) {
+  if (state.pool.filter(item => item.name === location.name).length > 0) {
     return null;
   }
 
   const newLocation = {
-    ident: uuidv4(),
-    name: locationName,
+    ident: location.ident,
+    name: location.name,
     items: []
   };
 
@@ -45,17 +44,40 @@ export const locationsSlice = createSlice({
     ]
   },
   reducers: {
-    addLocation: (state, action) => {
-      addNewLocationToState(state, action.payload);
+    addLocation: {
+      reducer: (state, action) => {
+        addNewLocationToState(state, action.payload);
+      },
+      prepare: (name) => ({
+        payload: {
+          ident: nanoid(),
+          name,
+        }
+      })
     },
-    addAndSelectLocation: (state, action) => {
-      const newLocation = addNewLocationToState(state, action.payload);
+    addAndSelectLocation: {
+      reducer: (state, action) => {
+        const newLocation = addNewLocationToState(state, action.payload);
 
-      if (newLocation) {
-        state.selected.push(newLocation.ident);
-      }
+        if (newLocation) {
+          state.selected.push(newLocation.ident);
+        }
+      },
+      prepare: (name) => ({
+        payload: {
+          ident: nanoid(),
+          name,
+        }
+      })
     },
     selectExistingLocation: (state, action) => {
+      const locationExists = state.pool.some(location => location.ident === action.payload);
+      const locationSelected = state.selected.includes(action.payload);
+
+      if (!locationExists || locationSelected) {
+        return state;
+      }
+
       state.selected.push(action.payload);
     },
     editLocation: (state, action) => {
@@ -67,7 +89,7 @@ export const locationsSlice = createSlice({
         return location.name === action.payload.newName;
       });
 
-      if (editableLocation === null || duplicateLocations.length > 0) {
+      if (editableLocation === -1 || duplicateLocations.length > 0) {
         return state;
       }
 
@@ -76,15 +98,23 @@ export const locationsSlice = createSlice({
     toggleLocationItemVisibility: (state, action) => {
       const locationIndex = state.pool.findIndex(location => location.ident === action.payload);
 
+      if (locationIndex === -1) {
+        return state;
+      }
+
       state.pool[locationIndex].itemsVisible = !state.pool[locationIndex].itemsVisible;
     },
     deselectLocation: (state, action) => {
       // Delete location from selected locations
       const selectedIndex = state.selected.findIndex(location => location === action.payload);
+      if (selectedIndex === -1) {
+        return state;
+      }
+
       state.selected.splice(selectedIndex, 1);
 
       // Remove all items from the location
-      state.pool.map(location => {
+      state.pool.forEach(location => {
         if (location.ident === action.payload) {
           location.items = [];
         }
@@ -93,10 +123,16 @@ export const locationsSlice = createSlice({
     deleteLocation: (state, action) => {
       // Delete location from selected locations
       const selectedIndex = state.selected.findIndex(location => location === action.payload);
-      state.selected.splice(selectedIndex, 1);
+      if (selectedIndex !== -1) {
+        state.selected.splice(selectedIndex, 1);
+      }
 
       // Delete location from location pool
       const poolIndex = state.pool.findIndex(poolItem => poolItem.ident === action.payload);
+      if (poolIndex === -1) {
+        return state;
+      }
+
       state.pool.splice(poolIndex, 1);
     },
     deleteAllLocations: (state) => {
@@ -105,8 +141,12 @@ export const locationsSlice = createSlice({
     },
 
     addItemToLocation: (state, action) => {
-      state.pool.map(location => {
+      state.pool.forEach(location => {
         if (location.ident !== action.payload.location) {
+          return;
+        }
+
+        if (location.items.some(item => item.ident === action.payload.item)) {
           return;
         }
 
@@ -120,7 +160,7 @@ export const locationsSlice = createSlice({
       });
     },
     updateItemValue: (state, action) => {
-      state.pool.map(location => {
+      state.pool.forEach(location => {
         if (location.ident !== action.payload.location) {
           return;
         }
@@ -132,7 +172,7 @@ export const locationsSlice = createSlice({
       });
     },
     removeItemFromLocation: (state, action) => {
-      state.pool.map(location => {
+      state.pool.forEach(location => {
         if (location.ident !== action.payload.location) {
           return;
         }
@@ -145,7 +185,7 @@ export const locationsSlice = createSlice({
     },
 
     removeItemFromAllLocations: (state, action) => {
-      state.pool.map(location => {
+      state.pool.forEach(location => {
         const itemIndex = location.items.findIndex(item => item.ident === action.payload);
         if (itemIndex !== -1) {
           location.items.splice(itemIndex, 1);

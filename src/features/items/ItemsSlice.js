@@ -1,5 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { v4 as uuidv4 } from 'uuid';
+import { createSlice, nanoid } from '@reduxjs/toolkit';
 
 export const itemsSlice = createSlice({
   name: 'items',
@@ -12,34 +11,46 @@ export const itemsSlice = createSlice({
     {ident: '55c6a5e5-242f-40d1-9942-2c98715b7ffb', name: 'Wood'}
   ],
   reducers: {
-    addItem: (state, action) => {
-      const newName = action.payload;
+    addItem: {
+      reducer: (state, action) => {
+        const { ident, name } = action.payload;
 
-      const duplicateItems = state.filter(item => {
-        return item.name === newName;
-      });
-
-      if (duplicateItems.length === 0) {
-        state.push({
-          ident: uuidv4(),
-          name: newName
+        const duplicateItems = state.filter(item => {
+          return item.name === name;
         });
 
-        state.sort((a, b) => {
-          return (a.name < b.name ? -1 : (a.name > b.name ? 1 : 0));
-        });
-      }
+        if (duplicateItems.length === 0) {
+          state.push({
+            ident,
+            name
+          });
+
+          state.sort((a, b) => {
+            return (a.name < b.name ? -1 : (a.name > b.name ? 1 : 0));
+          });
+        }
+      },
+      prepare: (name) => ({
+        payload: {
+          ident: nanoid(),
+          name,
+        }
+      })
     },
     editItem: (state, action) => {
       const editableItem = state.findIndex(item => {
         return item.ident === action.payload.ident;
       });
 
+      if (editableItem === -1) {
+        return state;
+      }
+
       const duplicateItems = state.filter(item => {
         return item.name === action.payload.newName;
       });
 
-      if (editableItem === null || duplicateItems.length > 0) {
+      if (duplicateItems.length > 0) {
         return state;
       }
 

@@ -37,13 +37,13 @@ export function DataHandling () {
   return (
     <div>
       <div className="mt-8 text-xs text-center text-gray-500">
-        <button className="m-0 p-0 bg-none text-gray-200 hover:text-white" onClick={saveManually}>
+        <button type="button" className="m-0 p-0 bg-none text-gray-200 hover:text-white" onClick={saveManually}>
           Save manually
         </button>
-        <button className="m-0 ml-5 p-0 bg-none text-gray-200 hover:text-white" onClick={exportState}>
+        <button type="button" className="m-0 ml-5 p-0 bg-none text-gray-200 hover:text-white" onClick={exportState}>
           Export
         </button>
-        <button className="m-0 ml-5 p-0 bg-none text-gray-200 hover:text-white" onClick={importState}>
+        <button type="button" className="m-0 ml-5 p-0 bg-none text-gray-200 hover:text-white" onClick={importState}>
           Import
         </button>
       </div>

@@ -1,5 +1,20 @@
-import { appVersion } from '../App';
+import { appVersion } from './version';
 import { applyMigrations } from './migrations';
+import { validateState } from './stateValidation';
+
+export const prepareStateForStorage = (data) => {
+  if (!data || typeof data.appVersion === 'undefined') {
+    return undefined;
+  }
+
+  const migratedData = appVersion > Number(data.appVersion) ? applyMigrations(data) : data;
+
+  if (!migratedData || !validateState(migratedData).valid) {
+    return undefined;
+  }
+
+  return migratedData;
+};
 
 export const loadState = () => {
   try {
@@ -9,16 +24,7 @@ export const loadState = () => {
     }
 
     const data = JSON.parse(serializedState);
-
-    if (typeof data.appVersion === 'undefined') {
-      return undefined;
-    }
-
-    if (appVersion > data.appVersion) {
-      return applyMigrations(data);
-    }
-
-    return data;
+    return prepareStateForStorage(data);
   } catch (err) {
     return undefined;
   }
@@ -26,7 +32,13 @@ export const loadState = () => {
 
 export const saveState = (state) => {
   try {
-    const serializedState = JSON.stringify({...state, appVersion: appVersion});
+    const stateToSave = {...state, appVersion: appVersion};
+
+    if (!validateState(stateToSave).valid) {
+      return false;
+    }
+
+    const serializedState = JSON.stringify(stateToSave);
     localStorage.setItem('state', serializedState);
     return true;
   } catch (err) {

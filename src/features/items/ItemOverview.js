@@ -13,11 +13,11 @@ export function ItemOverview () {
   const [modalVisible, setModalVisible] = React.useState(false);
 
   const listItems = items.map((item) =>
-    <div className="border border-gray-850 p-4 text-center text-2xl rounded-sm
-                    cursor-pointer hover:shadow-md transition-shadow duration-200"
-      key={item.ident} data-ident={item.ident} onClick={toggleEditForm}>
+    <button type="button" className="border border-gray-850 p-4 text-center text-2xl rounded-sm
+                    hover:border-primary-700 hover:shadow-md transition-shadow duration-200"
+      key={item.ident} onClick={() => toggleEditForm(item)}>
       {item.name}
-    </div>
+    </button>
   );
 
   function toggleCreateForm () {
@@ -25,9 +25,9 @@ export function ItemOverview () {
     setModalVisible(true);
   }
 
-  function toggleEditForm (event) {
+  function toggleEditForm (item) {
     setModalContent(
-      <EditItemForm ident={event.target.dataset.ident} oldName={event.target.innerText} closeForm={closeModal}/>
+      <EditItemForm ident={item.ident} oldName={item.name} closeForm={closeModal}/>
     );
     setModalVisible(true);
   }
@@ -41,13 +41,13 @@ export function ItemOverview () {
     <div className="relative">
       <div className="flex items-center">
         <h2 className="mr-4 text-2xl font-bold">Items</h2>
-        <button className="ml-auto btn btn-primary" onClick={toggleCreateForm}>
+        <button type="button" className="ml-auto btn btn-primary" onClick={toggleCreateForm}>
           Add Item
         </button>
       </div>
 
       <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-        {listItems}
+        {listItems.length > 0 ? listItems : <p className="text-sm text-gray-500">No items available yet.</p>}
       </div>
 
       { modalVisible &&

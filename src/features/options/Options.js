@@ -9,11 +9,13 @@ import {
 } from './OptionsSlice';
 import { deleteAllLocations } from '../locations/LocationsSlice';
 import { deleteAllItems } from '../items/ItemsSlice';
+import { Modal } from '../../layout/Modal';
 
 export function Options () {
   const dispatch = useDispatch();
 
   const options = useSelector(getOptions);
+  const [confirmation, setConfirmation] = React.useState(null);
 
   function doChangeNumberFormatLocale (event) {
     dispatch(changeNumberFormatLocale(event.target.value));
@@ -31,20 +33,27 @@ export function Options () {
     dispatch(changeMinimumProfitAmount(event.target.value));
   }
 
-  function doCleanStart () {
-    if (confirm('Do you really want to proceed? All current location and item data will be lost forever!')) {
-      dispatch(deleteAllLocations());
-      dispatch(deleteAllItems());
-      alert('All locations and items were deleted successfully. You can add new data now.');
-    }
+  function openCleanStartConfirmation () {
+    setConfirmation('clean-start');
   }
 
-  function doCompleteWipe () {
-    if (confirm('Do you really want to proceed? All data will be lost forever!')) {
-      localStorage.removeItem('state');
-      alert('All data was successfully deleted. The application will now reload.');
-      window.location.reload(true);
-    }
+  function openCompleteWipeConfirmation () {
+    setConfirmation('complete-wipe');
+  }
+
+  function closeConfirmation () {
+    setConfirmation(null);
+  }
+
+  function confirmCleanStart () {
+    dispatch(deleteAllLocations());
+    dispatch(deleteAllItems());
+    closeConfirmation();
+  }
+
+  function confirmCompleteWipe () {
+    localStorage.removeItem('state');
+    window.location.reload();
   }
 
   return (
@@ -54,7 +63,7 @@ export function Options () {
       <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-8">
 
         <div>
-          <label htmlFor="option-number-format" className="block text-xl">Number Format</label>
+          <label htmlFor="option-number-format-locale" className="block text-xl">Number Format</label>
           <small>Change how numbers appear in the application.</small>
           <select name="option-number-format-locale" id="option-number-format-locale"
             value={options.numberFormat.locale} onChange={doChangeNumberFormatLocale}
@@ -66,7 +75,7 @@ export function Options () {
         </div>
 
         <div>
-          <label htmlFor="option-number-format" className="block text-xl">Decimals</label>
+          <label htmlFor="option-number-format-decimals" className="block text-xl">Decimals</label>
           <small>Choose the amount of decimals displayed for numbers.</small>
           <input type="number" min="0" max="10" name="option-number-format-decimals" id="option-number-format-decimals"
             className="input mt-2"
@@ -74,7 +83,7 @@ export function Options () {
         </div>
 
         <div>
-          <label htmlFor="option-number-format" className="block text-xl">Minimum Profit</label>
+          <label htmlFor="option-minimum-profit-amount" className="block text-xl">Minimum Profit</label>
           <small>Set a minimum amount or percentage a trade must generate.</small>
           <br/>
           <small>Example: if you want to double your investment, set the percentage to 200%.</small>
@@ -105,7 +114,7 @@ export function Options () {
           <h3 className="text-red-400">Clean Start</h3>
           <small>Deletes all locations and items to start with a blank canvas. This operation cannot be undone!</small>
           <div className="mt-2">
-            <button className="py-2 px-3 bg-red-500 hover:bg-red-600 rounded-xs text-xs" onClick={doCleanStart}>
+            <button type="button" className="btn btn-danger" onClick={openCleanStartConfirmation}>
               Start clean
             </button>
           </div>
@@ -116,13 +125,39 @@ export function Options () {
           <small>Deletes all personal data and restores the example state of the application. This operation cannot be
             undone!</small>
           <div className="mt-2">
-            <button className="py-2 px-3 bg-red-500 hover:bg-red-600 rounded-xs text-xs" onClick={doCompleteWipe}>
+            <button type="button" className="btn btn-danger" onClick={openCompleteWipeConfirmation}>
               Wipe all data
             </button>
           </div>
         </div>
 
       </div>
+
+      {confirmation === 'clean-start' &&
+        <Modal visible={true} closeModal={closeConfirmation} label="Confirm clean start">
+          <h3 className="text-2xl mb-4">Start Clean?</h3>
+          <p className="text-sm text-gray-300">
+            This deletes all locations and items. Your display options stay unchanged.
+          </p>
+          <div className="mt-6 flex items-center justify-end gap-2">
+            <button type="button" className="btn" onClick={closeConfirmation}>Cancel</button>
+            <button type="button" className="btn btn-danger" onClick={confirmCleanStart}>Delete Locations and Items</button>
+          </div>
+        </Modal>
+      }
+
+      {confirmation === 'complete-wipe' &&
+        <Modal visible={true} closeModal={closeConfirmation} label="Confirm complete wipe">
+          <h3 className="text-2xl mb-4">Wipe All Data?</h3>
+          <p className="text-sm text-gray-300">
+            This deletes the saved browser data for Tradefinder and reloads the app with example data.
+          </p>
+          <div className="mt-6 flex items-center justify-end gap-2">
+            <button type="button" className="btn" onClick={closeConfirmation}>Cancel</button>
+            <button type="button" className="btn btn-danger" onClick={confirmCompleteWipe}>Wipe and Reload</button>
+          </div>
+        </Modal>
+      }
 
     </div>
   );

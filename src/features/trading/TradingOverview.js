@@ -25,7 +25,7 @@ export function TradingOverview () {
     setModalContent(
       <div>
         <SelectLocationForm closeForm={closeModal}/>
-        <button className="mt-6 text-sm text-gray-400 hover:text-gray-200" onClick={addAndSelectNewLocation}>
+        <button type="button" className="mt-6 text-sm text-gray-400 hover:text-gray-200" onClick={addAndSelectNewLocation}>
           Add new Location
         </button>
       </div>
@@ -37,7 +37,7 @@ export function TradingOverview () {
     setModalContent(
       <div>
         <CreateLocationForm closeForm={closeModal} selectAfterAdding={true}/>
-        <button className="mt-6 text-sm text-gray-400 hover:text-gray-200" onClick={selectNewLocation}>
+        <button type="button" className="mt-6 text-sm text-gray-400 hover:text-gray-200" onClick={selectNewLocation}>
           Add existing Location
         </button>
       </div>
@@ -59,7 +59,7 @@ export function TradingOverview () {
     <div>
       <div className="flex items-center">
         <h2 className="mr-4 text-2xl font-bold">Trading</h2>
-        <button className="ml-auto btn btn-primary"
+        <button type="button" className="ml-auto btn btn-primary"
           onClick={selectNewLocation}>
           Add Location
         </button>
@@ -68,7 +68,7 @@ export function TradingOverview () {
       <div className="mt-4 grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4">
         <div className="md:col-span-3">
           <div className="flex items-center mb-2">
-            <button title={itemToggleTitle} onClick={toggleLocationDisplay}
+            <button type="button" title={itemToggleTitle} onClick={toggleLocationDisplay}
               className={'mr-1 text-xxs cursor-pointer font-mono' + (tradingLocations.length === 0 ? ' hidden' : '')}>
               {locationItemsVisible ? <span>-</span> : <span>+</span>}
             </button>
@@ -82,7 +82,7 @@ export function TradingOverview () {
             <div className="text-center my-6">
               <span className=" opacity-25">No locations selected yet.</span>
               &nbsp;
-              <button onClick={selectNewLocation} className="opacity-50 hover:opacity-100">Select one</button>
+              <button type="button" onClick={selectNewLocation} className="opacity-50 hover:opacity-100">Select one</button>
             </div>
             }
           </div>

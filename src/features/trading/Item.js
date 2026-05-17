@@ -6,6 +6,7 @@ import { removeItemFromLocation, updateItemValue } from '../locations/LocationsS
 export function Item (props) {
   const dispatch = useDispatch();
   const dataChanged = useRef(false);
+  const [confirmRemove, setConfirmRemove] = React.useState(false);
 
   const inputClass = 'input input-xs';
 
@@ -27,19 +28,26 @@ export function Item (props) {
         location: props.locationIdent,
         item: {
           ident: props.item.ident,
-          buyAmount: parseFloat(buyAmount),
-          buyValue: parseFloat(buyValue),
-          sellAmount: parseFloat(sellAmount),
-          sellValue: parseFloat(sellValue)
+          buyAmount: parseInputNumber(buyAmount),
+          buyValue: parseInputNumber(buyValue),
+          sellAmount: parseInputNumber(sellAmount),
+          sellValue: parseInputNumber(sellValue)
         }
       }));
     }
   }, [buyAmount, buyValue, sellAmount, sellValue]);
 
+  if (!itemDetails) {
+    return null;
+  }
+
   function doRemoveItem () {
-    if (confirm('Do you really want to remove this item?')) {
-      dispatch(removeItemFromLocation({location: props.locationIdent, item: props.item.ident}));
-    }
+    dispatch(removeItemFromLocation({location: props.locationIdent, item: props.item.ident}));
+  }
+
+  function parseInputNumber (value) {
+    const parsedValue = parseFloat(value);
+    return Number.isFinite(parsedValue) ? parsedValue : 0;
   }
 
   function changeBuyAmount (e) {
@@ -68,7 +76,7 @@ export function Item (props) {
       <h4 className="break-words">
         {itemDetails.name}
         <button className="location-item-remove hidden text-xs text-gray-500 hover:text-red-400 focus:text-red-400 py-0 px-2"
-          onClick={doRemoveItem} title="Remove this Item">
+          type="button" onClick={() => setConfirmRemove(true)} title="Remove this Item">
           <svg className="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M310.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 210.7 54.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L114.7 256 9.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 301.3 265.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L205.3 256 310.6 150.6z"/></svg>
         </button>
       </h4>
@@ -80,8 +88,10 @@ export function Item (props) {
           <div className="text-xxs pt-1">Value</div>
         </div>
         <div className="grid grid-cols-2 gap-1">
-          <input type="number" value={buyAmount} className={inputClass} step="0.01" onChange={changeBuyAmount}/>
-          <input type="number" value={buyValue} className={inputClass} step="0.01" onChange={changeBuyValue}/>
+          <input type="number" value={buyAmount} className={inputClass} step="0.01" onChange={changeBuyAmount}
+            aria-label={`${itemDetails.name} buy amount`}/>
+          <input type="number" value={buyValue} className={inputClass} step="0.01" onChange={changeBuyValue}
+            aria-label={`${itemDetails.name} buy value`}/>
         </div>
       </div>
 
@@ -92,10 +102,22 @@ export function Item (props) {
           <div className="text-xxs pt-1">Amount</div>
         </div>
         <div className="grid grid-cols-2 gap-1">
-          <input type="number" value={sellValue} className={inputClass} step="0.01" onChange={changeSellValue}/>
-          <input type="number" value={sellAmount} className={inputClass} step="0.01" onChange={changeSellAmount}/>
+          <input type="number" value={sellValue} className={inputClass} step="0.01" onChange={changeSellValue}
+            aria-label={`${itemDetails.name} sell value`}/>
+          <input type="number" value={sellAmount} className={inputClass} step="0.01" onChange={changeSellAmount}
+            aria-label={`${itemDetails.name} sell amount`}/>
         </div>
       </div>
+
+      {confirmRemove &&
+        <div className="sm:col-span-3 border border-red-400 p-2 text-xs">
+          <p className="text-red-300">Remove {itemDetails.name} from this location?</p>
+          <div className="mt-2 flex items-center justify-end gap-2">
+            <button type="button" className="btn btn-xs" onClick={() => setConfirmRemove(false)}>Cancel</button>
+            <button type="button" className="btn btn-xs btn-danger" onClick={doRemoveItem}>Remove Item</button>
+          </div>
+        </div>
+      }
 
     </div>
   );

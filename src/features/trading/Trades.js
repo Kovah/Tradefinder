@@ -4,78 +4,14 @@ import { getLocations } from '../locations/LocationsSlice';
 import { getItems } from '../items/ItemsSlice';
 import { formatNumber } from '../../app/helper';
 import { getOptions } from '../options/OptionsSlice';
+import { calculateTrades } from '../../app/trades';
 
 export function Trades () {
   const allItems = useSelector(getItems);
   const locations = useSelector(getLocations);
   const options = useSelector(getOptions);
 
-  let possibleTrades = [];
-
-  // Loop through all locations to find trades
-  locations.forEach(location => {
-    if (location.items.length === 0) {
-      return;
-    }
-
-    location.items.forEach(item => {
-      // Test only items which can be sold
-      if (item.sellAmount <= 0 || item.sellValue <= 0) {
-        return;
-      }
-
-      locations.forEach(newLocation => {
-        // Abort if location is the same or no items are present
-        if (newLocation.ident === location.ident || location.items.length === 0) {
-          return false;
-        }
-
-        const possibleItem = newLocation.items.find(newItem => newItem.ident === item.ident);
-        if (typeof possibleItem === 'undefined') {
-          return;
-        }
-
-        if (
-          // Abort if item will not be bought
-          (possibleItem.buyAmount <= 0 || possibleItem.buyValue <= 0)
-          // Abort if no profit can be made
-          || (item.sellValue >= possibleItem.buyValue)
-        ) {
-          return;
-        }
-
-        const itemAmount = Math.min(item.sellAmount, possibleItem.buyAmount);
-        const profit = possibleItem.buyValue - item.sellValue;
-        const profitTotal = profit * itemAmount;
-        const profitPercentage = profit / item.sellValue * 100;
-        possibleTrades.push({
-          from: location.name,
-          to: newLocation.name,
-          item: allItems.find(searchItem => searchItem.ident === item.ident).name,
-          amount: itemAmount,
-          buyFor: item.sellValue,
-          sellFor: possibleItem.buyValue,
-          profit: profit,
-          profitTotal: profitTotal,
-          profitPercentage: profitPercentage,
-        });
-
-        if (options.minimumProfit?.amount > 0) {
-          possibleTrades = possibleTrades.filter((trade) => {
-            if (options.minimumProfit.type === 'percent') {
-              return trade.profitPercentage >= options.minimumProfit.amount;
-            } else if (options.minimumProfit.type === 'valueTotal') {
-              return trade.profitTotal >= options.minimumProfit.amount;
-            } else {
-              return trade.profit >= options.minimumProfit.amount;
-            }
-          });
-        }
-
-        possibleTrades.sort((a,b) => a.profitTotal < b.profitTotal ? 1 : 0);
-      });
-    });
-  });
+  const possibleTrades = calculateTrades({ items: allItems, locations, options });
 
   const allTrades = possibleTrades.map(trade =>
     <div className="border border-gray-850 p-2 rounded-xs" key={trade.from+trade.item+trade.to}>

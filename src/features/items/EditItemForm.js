@@ -7,6 +7,7 @@ import { removeItemFromAllLocations } from '../locations/LocationsSlice';
 export function EditItemForm (props) {
   const dispatch = useDispatch();
   const [name, setName] = React.useState(props.oldName);
+  const [confirmDelete, setConfirmDelete] = React.useState(false);
 
   function handleSubmit (event) {
     event.preventDefault();
@@ -18,11 +19,9 @@ export function EditItemForm (props) {
   }
 
   function doDeleteItem () {
-    if (confirm('Do you really want to delete this Item? It will be removed from any associated locations and trades.')) {
-      dispatch(removeItemFromAllLocations(props.ident));
-      dispatch(deleteItem(props.ident));
-      props.closeForm();
-    }
+    dispatch(removeItemFromAllLocations(props.ident));
+    dispatch(deleteItem(props.ident));
+    props.closeForm();
   }
 
   return (
@@ -30,12 +29,22 @@ export function EditItemForm (props) {
       <h3 className="text-2xl mb-4">Edit {props.oldName}</h3>
       <input type="hidden" value={props.ident}/>
 
-      <label htmlFor="item-name" className="block mb-2">Item Name</label>
-      <input type="text" id="item-name" value={name} minLength="1" autoFocus required
+      <label htmlFor="edit-item-name" className="block mb-2">Item Name</label>
+      <input type="text" id="edit-item-name" value={name} minLength="1" autoFocus required
         onChange={e => setName(e.target.value)} className="my-4 input"/>
 
+      {confirmDelete &&
+        <div className="mb-4 border border-red-400 p-3 text-sm">
+          <p className="text-red-300">This removes the item from all associated locations and trades.</p>
+          <div className="mt-3 flex items-center justify-end gap-2">
+            <button type="button" className="btn btn-sm" onClick={() => setConfirmDelete(false)}>Cancel</button>
+            <button type="button" onClick={doDeleteItem} className="btn btn-sm btn-danger">Delete Item</button>
+          </div>
+        </div>
+      }
+
       <div className="flex items-center">
-        <button type="button" onClick={doDeleteItem} className="btn btn-danger">
+        <button type="button" onClick={() => setConfirmDelete(true)} className="btn btn-danger">
           Delete Item
         </button>
         <button type="submit" className="ml-auto btn btn-primary">
