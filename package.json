@@ -7,8 +7,8 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.9.0",
-    "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.15",
+    "autoprefixer": "^10.5.2",
+    "postcss": "^8.5.16",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "react-redux": "^9.1.2",
