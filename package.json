@@ -15,8 +15,8 @@
     "tailwindcss": "^4.3.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.29.7",
-    "@babel/preset-react": "^7.29.7",
+    "@babel/core": "^8.0.1",
+    "@babel/preset-react": "^8.0.1",
     "@parcel/packager-raw-url": "^2.15.4",
     "@parcel/transformer-webmanifest": "^2.15.4",
     "@tailwindcss/postcss": "^4.3.1",
