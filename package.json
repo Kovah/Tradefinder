@@ -15,15 +15,15 @@
     "tailwindcss": "^4.3.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.29.7",
-    "@babel/preset-react": "^7.29.7",
+    "@babel/core": "^8.0.1",
+    "@babel/preset-react": "^8.0.1",
     "@parcel/packager-raw-url": "^2.15.4",
     "@parcel/transformer-webmanifest": "^2.15.4",
     "@tailwindcss/postcss": "^4.3.1",
     "parcel": "^2.15.4",
     "process": "^0.11.10",
     "svgo": "^4.0.1",
-    "vitest": "^4.1.9"
+    "vitest": "^5.0.0"
   },
   "scripts": {
     "serve": "parcel index.html --no-cache",
